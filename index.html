@@ -6,6 +6,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="assets/img/Logo Bulat.png">
+<link rel="stylesheet" href="assets/effects.css">
 <style>
         @keyframes scanline {
             0% { transform: translateY(-100%); }
@@ -246,14 +247,15 @@
 </div>
 </div>
 </section>
+
 <!-- SECTION A: CHANTS & LYRICS MODULE -->
 <section class="py-24 px-margin-desktop max-w-container-max mx-auto border-b-2 border-outline-variant/30">
-<div class="flex flex-col mb-12 border-l-4 border-tertiary-fixed-dim pl-6">
-<h2 class="font-headline-xl text-headline-xl uppercase tracking-tighter">Chants &amp; Lyrics</h2>
+<div class="flex flex-col mb-12 border-l-4 border-tertiary-fixed-dim pl-6" data-reveal>
+<h2 class="font-headline-xl text-headline-xl uppercase tracking-tighter glitch-text">Chants &amp; Lyrics</h2>
 <p class="font-data-mono text-tertiary-fixed-dim font-bold tracking-widest uppercase">Songs that carry the spirit of Fasilkom.</p>
 </div>
 <div class="flex flex-col gap-6">
-<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4" data-reveal data-delay="1">
 <!-- Preview 1 -->
 <div class="bg-surface-container border border-outline-variant p-4 hover:border-tertiary-fixed-dim transition-all duration-300 group cursor-pointer relative flex items-center justify-between">
 <div>
@@ -289,9 +291,9 @@
 </section>
 <!-- SECTION B: BERITA & KEGIATAN (TACTICAL FEED) -->   
 <section class="py-24 px-margin-desktop max-w-container-max mx-auto">
-<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4 border-l-4 border-primary pl-6">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4 border-l-4 border-primary pl-6" data-reveal>
 <div>
-<h2 class="font-headline-xl text-headline-xl uppercase tracking-tighter">News &amp; Activity</h2>
+<h2 class="font-headline-xl text-headline-xl uppercase tracking-tighter glitch-text">News &amp; Activity</h2>
 <p class="font-data-mono text-on-surface-variant font-bold tracking-widest uppercase">Latest updates, event reports, and community highlights.</p>
 </div>
 <button class="font-data-label text-primary hover:text-tertiary-fixed-dim transition-colors flex items-center gap-2">
@@ -299,7 +301,7 @@
 </button>
 </div>
 <!-- Wireframe Placeholder Grid -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" data-reveal data-delay="1">
 <!-- Placeholder 1 -->
 <div class="border-2 border-dashed border-outline-variant p-8 flex flex-col items-center justify-center min-h-[300px] bg-surface-container-lowest/30 group">
 <span class="material-symbols-outlined text-4xl text-outline-variant mb-4 group-hover:animate-spin">settings</span>
@@ -320,9 +322,9 @@
 </div>
 </div>
 <!-- DOCUMENTATION (PRESERVED) -->
-<div class="mt-24">
+<div class="mt-24" data-reveal>
 <div class="flex items-center gap-4 mb-8">
-<h2 class="font-headline-lg text-headline-lg uppercase tracking-tight">EVENT DOCUMENTATION</h2>
+<h2 class="font-headline-lg text-headline-lg uppercase tracking-tight glitch-text">EVENT DOCUMENTATION</h2>
 <div class="h-[2px] flex-grow bg-outline-variant"></div>
 <span class="font-data-mono text-sm text-on-surface-variant">[PHOTOS]</span>
 </div>
@@ -450,4 +452,5 @@
             });
         });
     </script>
+<script src="assets/effects.js" defer></script>
 </body></html>

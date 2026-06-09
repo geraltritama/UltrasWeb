@@ -6,6 +6,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="assets/img/Logo Bulat.png">
+<link rel="stylesheet" href="assets/effects.css">
 <style>
     @keyframes scanline {
         0% { transform: translateY(-100%); }
@@ -252,7 +253,7 @@
     <div class="flex flex-col md:flex-row justify-between items-end gap-6">
       <div>
         <span class="font-data-mono text-[10px] text-tertiary-fixed-dim tracking-[0.3em] uppercase block mb-2">// MODULE_05 — COMM_CHANNEL</span>
-        <h1 class="font-headline-xl text-[56px] md:text-[80px] leading-[0.85] font-extrabold uppercase tracking-tighter text-primary italic">
+        <h1 class="font-headline-xl text-[56px] md:text-[80px] leading-[0.85] font-extrabold uppercase tracking-tighter text-primary italic glitch-text" data-reveal>
           CONNECT<br><span class="text-tertiary-fixed-dim">WITH US</span>
         </h1>
       </div>
@@ -390,8 +391,8 @@
 
     <!-- Right: Contact Form -->
     <div class="lg:col-span-3">
-      <div class="mb-8 border-l-4 border-tertiary-fixed-dim pl-6">
-        <h2 class="font-headline-xl text-headline-lg uppercase tracking-tighter font-bold text-primary">Send a Message</h2>
+      <div class="mb-8 border-l-4 border-tertiary-fixed-dim pl-6" data-reveal>
+        <h2 class="font-headline-xl text-headline-lg uppercase tracking-tighter font-bold text-primary glitch-text">Send a Message</h2>
         <p class="font-data-mono text-[11px] text-on-surface-variant mt-1">Semua pesan direspon dalam 1×24 jam.</p>
       </div>
 
@@ -686,4 +687,5 @@
     });
   });
 </script>
+<script src="assets/effects.js" defer></script>
 </body></html>
