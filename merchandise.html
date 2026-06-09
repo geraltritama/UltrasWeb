@@ -142,11 +142,45 @@
 </script>
 </head>
 <body class="bg-background text-on-surface selection:bg-tertiary-fixed-dim selection:text-on-tertiary-fixed font-body-md overflow-x-hidden grid-bg">
+<!-- Page Loader -->
+<div id="page-loader" role="status" aria-label="Loading Ultras Fasilkom">
+<div class="ld-bg"></div>
+<div class="ld-scanlines"></div>
+<div class="ld-corner ld-corner--tl"></div>
+<div class="ld-corner ld-corner--tr"></div>
+<div class="ld-corner ld-corner--bl"></div>
+<div class="ld-corner ld-corner--br"></div>
+<div class="ld-vline ld-vline--l"></div>
+<div class="ld-vline ld-vline--r"></div>
+<div class="ld-body">
+<div class="ld-sys-id">ULTRAS FASILKOM</div>
+<div class="ld-logo-wrap">
+<div class="ld-ring ld-ring--1"></div>
+<div class="ld-ring ld-ring--2"></div>
+<div class="ld-ring ld-ring--3"></div>
+<div class="ld-orbit"></div>
+<div class="ld-orbit ld-orbit--rev"></div>
+<div class="ld-logo-frame">
+<div class="ld-scan"></div>
+<img src="assets/img/Logo Bulat.png" alt="" class="ld-logo" aria-hidden="true">
+<div class="ld-logo-overlay"></div>
+</div>
+</div>
+<div class="ld-status" id="ld-status">LOADING PAGE</div>
+<div class="ld-hex" id="ld-hex">0x464153494C4B4F4D</div>
+<div class="ld-prog-wrap">
+<div class="ld-prog-track">
+<div class="ld-prog-fill" id="ld-prog-fill"></div>
+</div>
+<div class="ld-prog-pct" id="ld-prog-pct">0%</div>
+</div>
+</div>
+</div>
 <div class="scanline-effect"></div>
 
 <!-- Header -->
 <header class="sticky top-0 z-[100] border-b-2 border-outline bg-background/95 backdrop-blur-sm">
-<div class="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto h-20">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto h-20">
   <div class="flex items-center gap-4">
     <div class="w-16 h-16 angular-cut overflow-hidden flex-shrink-0">
       <img src="assets/img/Logo Bulat.png" alt="Ultras Fasilkom" class="w-full h-full object-cover">
@@ -215,17 +249,17 @@
 <div class="bg-primary py-2 overflow-hidden border-b-2 border-outline">
   <div class="marquee-container">
     <div class="marquee-content flex gap-8">
-      <span class="text-background font-data-label font-bold text-sm px-4">FREE ONGKIR &gt; KARAWANG</span>
+      <span class="text-background font-data-label font-bold text-sm px-4">FREE SHIPPING &gt; KARAWANG</span>
       <span class="text-background font-data-label font-bold text-sm px-4">★</span>
-      <span class="text-background font-data-label font-bold text-sm px-4">STOCK TERBATAS — ORDER SEKARANG</span>
+      <span class="text-background font-data-label font-bold text-sm px-4">LIMITED STOCK — ORDER NOW</span>
       <span class="text-background font-data-label font-bold text-sm px-4">★</span>
-      <span class="text-background font-data-label font-bold text-sm px-4">SETIAP PEMBELIAN MENDUKUNG ULTRAS FASILKOM</span>
+      <span class="text-background font-data-label font-bold text-sm px-4">EVERY PURCHASE SUPPORTS ULTRAS FASILKOM</span>
       <span class="text-background font-data-label font-bold text-sm px-4">★</span>
-      <span class="text-background font-data-label font-bold text-sm px-4">FREE ONGKIR &gt; KARAWANG</span>
+      <span class="text-background font-data-label font-bold text-sm px-4">FREE SHIPPING &gt; KARAWANG</span>
       <span class="text-background font-data-label font-bold text-sm px-4">★</span>
-      <span class="text-background font-data-label font-bold text-sm px-4">STOCK TERBATAS — ORDER SEKARANG</span>
+      <span class="text-background font-data-label font-bold text-sm px-4">LIMITED STOCK — ORDER NOW</span>
       <span class="text-background font-data-label font-bold text-sm px-4">★</span>
-      <span class="text-background font-data-label font-bold text-sm px-4">SETIAP PEMBELIAN MENDUKUNG ULTRAS FASILKOM</span>
+      <span class="text-background font-data-label font-bold text-sm px-4">EVERY PURCHASE SUPPORTS ULTRAS FASILKOM</span>
       <span class="text-background font-data-label font-bold text-sm px-4">★</span>
     </div>
   </div>
@@ -237,7 +271,7 @@
     <span class="font-data-mono text-[10px] text-on-surface-variant mr-2">FILTER_BY:</span>
     <button class="filter-btn active font-data-label text-[11px] uppercase tracking-widest px-4 py-2 border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-200 angular-cut-sm" data-filter="all">ALL ITEMS</button>
     <button class="filter-btn font-data-label text-[11px] uppercase tracking-widest px-4 py-2 border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-200 angular-cut-sm" data-filter="jersey">JERSEY</button>
-    <button class="filter-btn font-data-label text-[11px] uppercase tracking-widest px-4 py-2 border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-200 angular-cut-sm" data-filter="aksesoris">AKSESORIS</button>
+    <button class="filter-btn font-data-label text-[11px] uppercase tracking-widest px-4 py-2 border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-200 angular-cut-sm" data-filter="accessories">ACCESSORIES</button>
     <button class="filter-btn font-data-label text-[11px] uppercase tracking-widest px-4 py-2 border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-200 angular-cut-sm" data-filter="headwear">HEADWEAR</button>
     <div class="ml-auto hidden md:flex items-center gap-2 font-data-mono text-[10px] text-on-surface-variant">
       <span class="material-symbols-outlined text-sm">inventory_2</span>
@@ -305,11 +339,11 @@
     </div>
 
     <!-- Item 003 -->
-    <div class="product-card bg-surface-container border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-300 group cursor-pointer relative flex flex-col" data-category="aksesoris">
+    <div class="product-card bg-surface-container border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-300 group cursor-pointer relative flex flex-col" data-category="accessories">
       <div class="relative overflow-hidden aspect-square bg-surface-container-lowest">
         <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=400&h=400&fit=crop&q=80" alt="Syal Ultras" class="product-img w-full h-full object-cover">
         <div class="absolute top-3 left-3">
-          <span class="font-data-mono text-[9px] bg-background/90 text-on-surface-variant px-2 py-1 border border-outline-variant/50">AKSESORIS</span>
+          <span class="font-data-mono text-[9px] bg-background/90 text-on-surface-variant px-2 py-1 border border-outline-variant/50">ACCESSORIES</span>
         </div>
         <div class="absolute top-3 right-3">
           <span class="font-data-mono text-[9px] bg-tertiary-fixed-dim text-background px-2 py-1 font-bold">IN STOCK</span>
@@ -322,7 +356,7 @@
       </div>
       <div class="p-4 flex flex-col flex-grow">
         <span class="font-data-mono text-[9px] text-on-surface-variant mb-1">SKU: UFK-SYL-001</span>
-        <h3 class="font-headline-md text-base font-bold uppercase tracking-tight text-primary mb-1">Syal Ultras<br>Official 2026</h3>
+        <h3 class="font-headline-md text-base font-bold uppercase tracking-tight text-primary mb-1">Ultras Scarf<br>Official 2026</h3>
         <p class="font-data-mono text-[10px] text-on-surface-variant flex-grow">Knit weave · Double-sided print · 150cm × 20cm</p>
         <div class="flex items-center justify-between mt-3 pt-3 border-t border-outline-variant/40">
           <span class="font-data-mono text-lg font-bold text-tertiary-fixed-dim">Rp 75.000</span>
@@ -359,11 +393,11 @@
     </div>
 
     <!-- Item 005 -->
-    <div class="product-card bg-surface-container border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-300 group cursor-pointer relative flex flex-col" data-category="aksesoris">
+    <div class="product-card bg-surface-container border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-300 group cursor-pointer relative flex flex-col" data-category="accessories">
       <div class="relative overflow-hidden aspect-square bg-surface-container-lowest">
         <img src="https://images.unsplash.com/photo-1527866959252-deab85ef7d1b?w=400&h=400&fit=crop&q=80" alt="Tote Bag" class="product-img w-full h-full object-cover">
         <div class="absolute top-3 left-3">
-          <span class="font-data-mono text-[9px] bg-background/90 text-on-surface-variant px-2 py-1 border border-outline-variant/50">AKSESORIS</span>
+          <span class="font-data-mono text-[9px] bg-background/90 text-on-surface-variant px-2 py-1 border border-outline-variant/50">ACCESSORIES</span>
         </div>
         <div class="absolute top-3 right-3">
           <span class="font-data-mono text-[9px] bg-surface-container-high text-on-surface-variant px-2 py-1 font-bold border border-outline-variant">LIMITED</span>
@@ -377,7 +411,7 @@
       <div class="p-4 flex flex-col flex-grow">
         <span class="font-data-mono text-[9px] text-on-surface-variant mb-1">SKU: UFK-BAG-001</span>
         <h3 class="font-headline-md text-base font-bold uppercase tracking-tight text-primary mb-1">Totebag<br>Canvas Edition</h3>
-        <p class="font-data-mono text-[10px] text-on-surface-variant flex-grow">Canvas tebal · Sablon eco-print · 38cm × 42cm</p>
+        <p class="font-data-mono text-[10px] text-on-surface-variant flex-grow">Thick canvas · Eco-print screen · 38cm × 42cm</p>
         <div class="flex items-center justify-between mt-3 pt-3 border-t border-outline-variant/40">
           <span class="font-data-mono text-lg font-bold text-tertiary-fixed-dim">Rp 55.000</span>
           <span class="material-symbols-outlined text-outline-variant group-hover:text-tertiary-fixed-dim transition-colors text-xl">add_shopping_cart</span>
@@ -386,11 +420,11 @@
     </div>
 
     <!-- Item 006 -->
-    <div class="product-card bg-surface-container border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-300 group cursor-pointer relative flex flex-col" data-category="aksesoris">
+    <div class="product-card bg-surface-container border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-300 group cursor-pointer relative flex flex-col" data-category="accessories">
       <div class="relative overflow-hidden aspect-square bg-surface-container-lowest">
         <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=400&fit=crop&q=80" alt="Stiker Pack" class="product-img w-full h-full object-cover">
         <div class="absolute top-3 left-3">
-          <span class="font-data-mono text-[9px] bg-background/90 text-on-surface-variant px-2 py-1 border border-outline-variant/50">AKSESORIS</span>
+          <span class="font-data-mono text-[9px] bg-background/90 text-on-surface-variant px-2 py-1 border border-outline-variant/50">ACCESSORIES</span>
         </div>
         <div class="absolute top-3 right-3">
           <span class="font-data-mono text-[9px] bg-tertiary-fixed-dim text-background px-2 py-1 font-bold">IN STOCK</span>
@@ -404,7 +438,7 @@
       <div class="p-4 flex flex-col flex-grow">
         <span class="font-data-mono text-[9px] text-on-surface-variant mb-1">SKU: UFK-STK-001</span>
         <h3 class="font-headline-md text-base font-bold uppercase tracking-tight text-primary mb-1">Stiker Pack<br>Vol.1 (6 pcs)</h3>
-        <p class="font-data-mono text-[10px] text-on-surface-variant flex-grow">Waterproof vinyl · UV resistant · 6 desain eksklusif</p>
+        <p class="font-data-mono text-[10px] text-on-surface-variant flex-grow">Waterproof vinyl · UV resistant · 6 exclusive designs</p>
         <div class="flex items-center justify-between mt-3 pt-3 border-t border-outline-variant/40">
           <span class="font-data-mono text-lg font-bold text-tertiary-fixed-dim">Rp 25.000</span>
           <span class="material-symbols-outlined text-outline-variant group-hover:text-tertiary-fixed-dim transition-colors text-xl">add_shopping_cart</span>
@@ -431,7 +465,7 @@
       <div class="p-4 flex flex-col flex-grow">
         <span class="font-data-mono text-[9px] text-on-surface-variant mb-1">SKU: UFK-BNI-001</span>
         <h3 class="font-headline-md text-base font-bold uppercase tracking-tight text-primary mb-1">Knit Beanie<br>Winter Edition</h3>
-        <p class="font-data-mono text-[10px] text-on-surface-variant flex-grow">Rajut akrilik tebal · Bordir emblem · One size</p>
+        <p class="font-data-mono text-[10px] text-on-surface-variant flex-grow">Thick acrylic knit · Emblem embroidery · One size</p>
         <div class="flex items-center justify-between mt-3 pt-3 border-t border-outline-variant/40">
           <span class="font-data-mono text-lg font-bold text-tertiary-fixed-dim">Rp 65.000</span>
           <span class="material-symbols-outlined text-outline-variant group-hover:text-tertiary-fixed-dim transition-colors text-xl">add_shopping_cart</span>
@@ -451,7 +485,7 @@
         </div>
         <div class="absolute inset-0 bg-background/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
           <div class="text-center">
-            <p class="font-data-mono text-[10px] text-on-surface-variant uppercase mb-2">Stok habis</p>
+            <p class="font-data-mono text-[10px] text-on-surface-variant uppercase mb-2">Out of stock</p>
             <button class="border border-primary text-primary px-6 py-2 font-data-label text-[11px] uppercase angular-cut-sm hover:bg-white/10 transition-colors">
               NOTIFY ME
             </button>
@@ -461,7 +495,7 @@
       <div class="p-4 flex flex-col flex-grow">
         <span class="font-data-mono text-[9px] text-on-surface-variant mb-1">SKU: UFK-TEE-001</span>
         <h3 class="font-headline-md text-base font-bold uppercase tracking-tight text-primary mb-1">Training Tee<br>Fasilkom Core</h3>
-        <p class="font-data-mono text-[10px] text-on-surface-variant flex-grow">Cotton combed 30s · Sablon DTG · S/M/L/XL</p>
+        <p class="font-data-mono text-[10px] text-on-surface-variant flex-grow">Cotton combed 30s · DTG print · S/M/L/XL</p>
         <div class="flex items-center justify-between mt-3 pt-3 border-t border-outline-variant/40">
           <span class="font-data-mono text-lg font-bold text-on-surface-variant line-through">Rp 120.000</span>
           <span class="font-data-mono text-[10px] text-error bg-error-container/30 px-2 py-1">OUT OF STOCK</span>
@@ -480,7 +514,7 @@
       <div>
         <span class="font-data-mono text-[10px] text-tertiary-fixed-dim tracking-widest block mb-2">// CUSTOM_ORDER</span>
         <h2 class="font-headline-xl text-headline-lg uppercase tracking-tighter font-bold text-primary">Want custom merch<br>for your squad?</h2>
-        <p class="font-data-mono text-[11px] text-on-surface-variant mt-2">Custom bulk order tersedia untuk 10+ pcs. Hubungi pengurus kami.</p>
+        <p class="font-data-mono text-[11px] text-on-surface-variant mt-2">Custom bulk orders available for 10+ pieces. Contact our team.</p>
       </div>
       <a href="contact.html" class="flex-shrink-0 bg-primary text-background px-10 py-4 font-headline-md font-bold uppercase angular-cut hover:bg-tertiary-fixed-dim transition-all duration-300 flex items-center gap-3">
         CONTACT US <span class="material-symbols-outlined">arrow_forward</span>

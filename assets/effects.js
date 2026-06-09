@@ -3,6 +3,96 @@
 
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    /* ── 0. PAGE LOADER ── */
+    (function () {
+        var loader   = document.getElementById('page-loader');
+        if (!loader) return;
+        var statusEl = document.getElementById('ld-status');
+        var hexEl    = document.getElementById('ld-hex');
+        var progFill = document.getElementById('ld-prog-fill');
+        var progPct  = document.getElementById('ld-prog-pct');
+
+        var statuses = [
+            'LOADING PAGE',
+            'PREPARING CONTENT',
+            'ALMOST THERE',
+            'WELCOME',
+            'FASILKOM BELONGS TO US',
+            'READY'
+        ];
+        var hexVals = [
+            '0x464153494C4B4F4D',
+            '0x55 4C 54 52 41 53',
+            '0x46 41 53 49 4C 4B',
+            '0x4F 4D 00 E6 39 FF',
+            '0x554C545241535F4656'
+        ];
+
+        var statusIdx = 0;
+        var curProg   = 0;
+        var dismissed = false;
+
+        var hexTimer = setInterval(function () {
+            hexEl.textContent = hexVals[Math.floor(Math.random() * hexVals.length)];
+        }, 380);
+
+        function animProg(target, dur, cb) {
+            var t0   = performance.now();
+            var from = curProg;
+            (function step(now) {
+                var t = Math.min((now - t0) / dur, 1);
+                var e = t < 0.5 ? 2*t*t : -1 + (4 - 2*t)*t;
+                curProg = from + (target - from) * e;
+                progFill.style.width = curProg + '%';
+                progPct.textContent  = Math.floor(curProg) + '%';
+                if (t < 1) requestAnimationFrame(step);
+                else { curProg = target; if (cb) cb(); }
+            })(t0);
+        }
+
+        function nextStatus() {
+            if (statusIdx < statuses.length - 1) {
+                statusIdx++;
+                statusEl.textContent = statuses[statusIdx];
+            }
+        }
+
+        function dismiss() {
+            if (dismissed) return;
+            dismissed = true;
+            clearInterval(hexTimer);
+            statusEl.textContent = statuses[statuses.length - 1];
+            animProg(100, 350, function () {
+                setTimeout(function () {
+                    loader.classList.add('ld-out');
+                    setTimeout(function () { loader.remove(); }, 750);
+                }, 180);
+            });
+        }
+
+        // Boot sequence
+        setTimeout(function () {
+            animProg(28, 550, function () {
+                nextStatus();
+                setTimeout(function () {
+                    animProg(58, 750, function () {
+                        nextStatus();
+                        setTimeout(function () {
+                            animProg(82, 600, function () { nextStatus(); });
+                        }, 300);
+                    });
+                }, 380);
+            });
+        }, 150);
+
+        if (document.readyState === 'complete') {
+            setTimeout(dismiss, 600);
+        } else {
+            window.addEventListener('load', function () { setTimeout(dismiss, 300); });
+        }
+        setTimeout(dismiss, 4200);
+    })();
+
     /* ── 1. SECTION REVEAL ── */
     if (!reduceMotion && 'IntersectionObserver' in window) {
         const revealObs = new IntersectionObserver((entries) => {

@@ -199,11 +199,45 @@
 </script>
 </head>
 <body class="bg-background text-on-surface selection:bg-tertiary-fixed-dim selection:text-on-tertiary-fixed font-body-md overflow-x-hidden grid-bg">
+<!-- Page Loader -->
+<div id="page-loader" role="status" aria-label="Loading Ultras Fasilkom">
+<div class="ld-bg"></div>
+<div class="ld-scanlines"></div>
+<div class="ld-corner ld-corner--tl"></div>
+<div class="ld-corner ld-corner--tr"></div>
+<div class="ld-corner ld-corner--bl"></div>
+<div class="ld-corner ld-corner--br"></div>
+<div class="ld-vline ld-vline--l"></div>
+<div class="ld-vline ld-vline--r"></div>
+<div class="ld-body">
+<div class="ld-sys-id">ULTRAS FASILKOM</div>
+<div class="ld-logo-wrap">
+<div class="ld-ring ld-ring--1"></div>
+<div class="ld-ring ld-ring--2"></div>
+<div class="ld-ring ld-ring--3"></div>
+<div class="ld-orbit"></div>
+<div class="ld-orbit ld-orbit--rev"></div>
+<div class="ld-logo-frame">
+<div class="ld-scan"></div>
+<img src="assets/img/Logo Bulat.png" alt="" class="ld-logo" aria-hidden="true">
+<div class="ld-logo-overlay"></div>
+</div>
+</div>
+<div class="ld-status" id="ld-status">LOADING PAGE</div>
+<div class="ld-hex" id="ld-hex">0x464153494C4B4F4D</div>
+<div class="ld-prog-wrap">
+<div class="ld-prog-track">
+<div class="ld-prog-fill" id="ld-prog-fill"></div>
+</div>
+<div class="ld-prog-pct" id="ld-prog-pct">0%</div>
+</div>
+</div>
+</div>
 <div class="scanline-effect"></div>
 
 <!-- Header -->
 <header class="sticky top-0 z-[100] border-b-2 border-outline bg-background/95 backdrop-blur-sm">
-<div class="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto h-20">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto h-20">
   <div class="flex items-center gap-4">
     <div class="w-16 h-16 angular-cut overflow-hidden flex-shrink-0">
       <img src="assets/img/Logo Bulat.png" alt="Ultras Fasilkom" class="w-full h-full object-cover">
@@ -262,7 +296,7 @@
           <span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim blink"></span>
           <span class="font-data-mono text-[10px] text-tertiary-fixed-dim">CHANNEL: OPEN</span>
         </div>
-        <p class="font-data-mono text-[11px] text-on-surface-variant max-w-xs text-right">Kirim pesan, pertanyaan, atau ajukan kolaborasi.</p>
+        <p class="font-data-mono text-[11px] text-on-surface-variant max-w-xs text-right">Send a message, question, or propose a collaboration.</p>
       </div>
     </div>
   </div>
@@ -287,8 +321,8 @@
         <p class="text-tertiary-fixed-dim mt-3">$ cat info.txt</p>
         <div class="mt-2 space-y-1 text-on-surface">
           <p><span class="text-on-surface-variant">ORG :</span> Ultras Fasilkom UNSIKA</p>
-          <p><span class="text-on-surface-variant">LOC :</span> Karawang, Jawa Barat</p>
-          <p><span class="text-on-surface-variant">FAC :</span> Fakultas Ilmu Komputer</p>
+          <p><span class="text-on-surface-variant">LOC :</span> Karawang, West Java</p>
+          <p><span class="text-on-surface-variant">FAC :</span> Faculty of Computer Science</p>
           <p><span class="text-on-surface-variant">UNI :</span> Universitas Singaperbangsa Karawang</p>
         </div>
         <p class="text-tertiary-fixed-dim mt-3">$ uptime</p>
@@ -378,10 +412,10 @@
           <span class="material-symbols-outlined text-tertiary-fixed-dim text-base">location_on</span>
           <span class="font-data-mono text-[10px] text-on-surface-variant uppercase tracking-widest">COORDINATES</span>
         </div>
-        <p class="font-data-label text-sm text-primary font-bold uppercase">Fakultas Ilmu Komputer</p>
+        <p class="font-data-label text-sm text-primary font-bold uppercase">Faculty of Computer Science</p>
         <p class="font-data-mono text-[11px] text-on-surface-variant mt-1">Universitas Singaperbangsa Karawang</p>
-        <p class="font-data-mono text-[11px] text-on-surface-variant">Jl. H.S. Ronggowaluyo, Telukjambe Timur,</p>
-        <p class="font-data-mono text-[11px] text-on-surface-variant">Karawang, Jawa Barat 41361</p>
+        <p class="font-data-mono text-[11px] text-on-surface-variant">Jl. H.S. Ronggowaluyo, East Telukjambe,</p>
+        <p class="font-data-mono text-[11px] text-on-surface-variant">Karawang, West Java 41361</p>
         <div class="mt-3 pt-3 border-t border-outline-variant/30 flex items-center gap-2">
           <span class="font-data-mono text-[9px] text-on-surface-variant">LAT: -6.3085 · LNG: 107.3241</span>
         </div>
@@ -393,45 +427,45 @@
     <div class="lg:col-span-3">
       <div class="mb-8 border-l-4 border-tertiary-fixed-dim pl-6" data-reveal>
         <h2 class="font-headline-xl text-headline-lg uppercase tracking-tighter font-bold text-primary glitch-text">Send a Message</h2>
-        <p class="font-data-mono text-[11px] text-on-surface-variant mt-1">Semua pesan direspon dalam 1×24 jam.</p>
+        <p class="font-data-mono text-[11px] text-on-surface-variant mt-1">All messages are responded to within 24 hours.</p>
       </div>
 
       <form id="contact-form" class="flex flex-col gap-8" novalidate>
 
         <!-- Subject selector -->
         <div>
-          <p class="font-data-mono text-[10px] text-on-surface-variant uppercase tracking-widest mb-3">// TOPIK_PESAN</p>
-          <div class="flex flex-wrap gap-3" id="subject-group" role="group" aria-label="Pilih topik pesan">
-            <button type="button" class="subject-btn font-data-label text-[11px] uppercase tracking-widest px-4 py-2 border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-200 angular-cut-sm" data-subject="Umum">UMUM</button>
+          <p class="font-data-mono text-[10px] text-on-surface-variant uppercase tracking-widest mb-3">// MESSAGE_TOPIC</p>
+          <div class="flex flex-wrap gap-3" id="subject-group" role="group" aria-label="Choose message topic">
+            <button type="button" class="subject-btn font-data-label text-[11px] uppercase tracking-widest px-4 py-2 border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-200 angular-cut-sm" data-subject="General">GENERAL</button>
             <button type="button" class="subject-btn font-data-label text-[11px] uppercase tracking-widest px-4 py-2 border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-200 angular-cut-sm" data-subject="Merchandise">MERCHANDISE</button>
-            <button type="button" class="subject-btn font-data-label text-[11px] uppercase tracking-widest px-4 py-2 border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-200 angular-cut-sm" data-subject="Kolaborasi">KOLABORASI</button>
-            <button type="button" class="subject-btn font-data-label text-[11px] uppercase tracking-widest px-4 py-2 border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-200 angular-cut-sm" data-subject="Keanggotaan">KEANGGOTAAN</button>
-            <button type="button" class="subject-btn font-data-label text-[11px] uppercase tracking-widest px-4 py-2 border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-200 angular-cut-sm" data-subject="Lainnya">LAINNYA</button>
+            <button type="button" class="subject-btn font-data-label text-[11px] uppercase tracking-widest px-4 py-2 border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-200 angular-cut-sm" data-subject="Collaboration">COLLABORATION</button>
+            <button type="button" class="subject-btn font-data-label text-[11px] uppercase tracking-widest px-4 py-2 border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-200 angular-cut-sm" data-subject="Membership">MEMBERSHIP</button>
+            <button type="button" class="subject-btn font-data-label text-[11px] uppercase tracking-widest px-4 py-2 border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-200 angular-cut-sm" data-subject="Other">OTHER</button>
           </div>
           <input type="hidden" id="subject-input" name="subject" value="">
-          <p class="font-data-mono text-[9px] text-error mt-2 hidden" id="subject-error">Pilih satu topik pesan.</p>
+          <p class="font-data-mono text-[9px] text-error mt-2 hidden" id="subject-error">Please choose a message topic.</p>
         </div>
 
         <!-- Name + Email row -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div class="input-group">
-            <input type="text" id="name" name="name" placeholder=" " class="terminal-input" autocomplete="name" required aria-required="true" aria-label="Nama lengkap">
-            <label for="name">Nama Lengkap *</label>
-            <p class="font-data-mono text-[9px] text-error mt-1 hidden" id="name-error">Masukkan nama lengkap.</p>
+            <input type="text" id="name" name="name" placeholder=" " class="terminal-input" autocomplete="name" required aria-required="true" aria-label="Full name">
+            <label for="name">Full Name *</label>
+            <p class="font-data-mono text-[9px] text-error mt-1 hidden" id="name-error">Please enter your full name.</p>
           </div>
           <div class="input-group">
-            <input type="email" id="email" name="email" placeholder=" " class="terminal-input" autocomplete="email" required aria-required="true" aria-label="Alamat email">
-            <label for="email">Alamat Email *</label>
-            <p class="font-data-mono text-[9px] text-error mt-1 hidden" id="email-error">Masukkan email yang valid.</p>
+            <input type="email" id="email" name="email" placeholder=" " class="terminal-input" autocomplete="email" required aria-required="true" aria-label="Email address">
+            <label for="email">Email Address *</label>
+            <p class="font-data-mono text-[9px] text-error mt-1 hidden" id="email-error">Please enter a valid email.</p>
           </div>
         </div>
 
         <!-- Message -->
         <div>
-          <label for="message" class="font-data-mono text-[10px] text-on-surface-variant uppercase tracking-widest block mb-2">// PESAN *</label>
-          <textarea id="message" name="message" rows="6" placeholder="Tulis pesanmu di sini..." class="terminal-textarea" required aria-required="true" aria-label="Pesan"></textarea>
+          <label for="message" class="font-data-mono text-[10px] text-on-surface-variant uppercase tracking-widest block mb-2">// MESSAGE *</label>
+          <textarea id="message" name="message" rows="6" placeholder="Write your message here..." class="terminal-textarea" required aria-required="true" aria-label="Message"></textarea>
           <div class="flex justify-between mt-1">
-            <p class="font-data-mono text-[9px] text-error hidden" id="message-error">Pesan tidak boleh kosong.</p>
+            <p class="font-data-mono text-[9px] text-error hidden" id="message-error">Message cannot be empty.</p>
             <p class="font-data-mono text-[9px] text-on-surface-variant ml-auto"><span id="char-count">0</span> / 500</p>
           </div>
         </div>
@@ -442,7 +476,7 @@
             <span id="submit-label">TRANSMIT MESSAGE</span>
             <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" id="submit-icon">send</span>
           </button>
-          <p class="font-data-mono text-[10px] text-on-surface-variant">* Field wajib diisi. Data tidak disimpan pihak ketiga.</p>
+          <p class="font-data-mono text-[10px] text-on-surface-variant">* Required fields. Data is not stored by third parties.</p>
         </div>
 
       </form>
@@ -457,41 +491,41 @@
 
           <div class="faq-item border border-outline-variant bg-surface-container-lowest">
             <button class="faq-trigger w-full flex items-center justify-between p-4 text-left focus:outline-none focus-visible:ring-1 focus-visible:ring-tertiary-fixed-dim" aria-expanded="false">
-              <span class="font-data-label text-[12px] uppercase text-primary">Bagaimana cara bergabung dengan Ultras Fasilkom?</span>
+              <span class="font-data-label text-[12px] uppercase text-primary">How do I join Ultras Fasilkom?</span>
               <span class="material-symbols-outlined text-outline-variant text-base flex-shrink-0 transition-transform duration-200">add</span>
             </button>
             <div class="faq-body overflow-hidden" style="max-height:0; transition: max-height 0.3s ease;">
-              <p class="font-data-mono text-[11px] text-on-surface-variant px-4 pb-4 leading-relaxed">Ikuti open recruitment yang diadakan setiap awal semester. Pantau media sosial kami untuk info pendaftaran terbaru.</p>
+              <p class="font-data-mono text-[11px] text-on-surface-variant px-4 pb-4 leading-relaxed">Join our open recruitment held at the start of each semester. Follow our social media for the latest registration info.</p>
             </div>
           </div>
 
           <div class="faq-item border border-outline-variant bg-surface-container-lowest">
             <button class="faq-trigger w-full flex items-center justify-between p-4 text-left focus:outline-none focus-visible:ring-1 focus-visible:ring-tertiary-fixed-dim" aria-expanded="false">
-              <span class="font-data-label text-[12px] uppercase text-primary">Apakah merchandise tersedia untuk umum?</span>
+              <span class="font-data-label text-[12px] uppercase text-primary">Is merchandise available to the public?</span>
               <span class="material-symbols-outlined text-outline-variant text-base flex-shrink-0 transition-transform duration-200">add</span>
             </button>
             <div class="faq-body overflow-hidden" style="max-height:0; transition: max-height 0.3s ease;">
-              <p class="font-data-mono text-[11px] text-on-surface-variant px-4 pb-4 leading-relaxed">Ya, merchandise kami tersedia untuk semua civitas akademika UNSIKA. Order melalui halaman Merchandise atau hubungi pengurus langsung.</p>
+              <p class="font-data-mono text-[11px] text-on-surface-variant px-4 pb-4 leading-relaxed">Yes, our merchandise is available to all UNSIKA members. Order through the Merchandise page or contact our team directly.</p>
             </div>
           </div>
 
           <div class="faq-item border border-outline-variant bg-surface-container-lowest">
             <button class="faq-trigger w-full flex items-center justify-between p-4 text-left focus:outline-none focus-visible:ring-1 focus-visible:ring-tertiary-fixed-dim" aria-expanded="false">
-              <span class="font-data-label text-[12px] uppercase text-primary">Apakah bisa custom order merch dalam jumlah besar?</span>
+              <span class="font-data-label text-[12px] uppercase text-primary">Can we custom order merchandise in bulk?</span>
               <span class="material-symbols-outlined text-outline-variant text-base flex-shrink-0 transition-transform duration-200">add</span>
             </button>
             <div class="faq-body overflow-hidden" style="max-height:0; transition: max-height 0.3s ease;">
-              <p class="font-data-mono text-[11px] text-on-surface-variant px-4 pb-4 leading-relaxed">Bisa. Minimum order 10 pcs untuk custom bulk. Hubungi kami via form di atas atau DM Instagram dengan subject "Custom Order".</p>
+              <p class="font-data-mono text-[11px] text-on-surface-variant px-4 pb-4 leading-relaxed">Yes. Minimum 10 pieces for custom bulk orders. Contact us via the form above or DM our Instagram with subject "Custom Order".</p>
             </div>
           </div>
 
           <div class="faq-item border border-outline-variant bg-surface-container-lowest">
             <button class="faq-trigger w-full flex items-center justify-between p-4 text-left focus:outline-none focus-visible:ring-1 focus-visible:ring-tertiary-fixed-dim" aria-expanded="false">
-              <span class="font-data-label text-[12px] uppercase text-primary">Bagaimana cara mengirim dokumentasi ke gallery?</span>
+              <span class="font-data-label text-[12px] uppercase text-primary">How do I submit photos to the gallery?</span>
               <span class="material-symbols-outlined text-outline-variant text-base flex-shrink-0 transition-transform duration-200">add</span>
             </button>
             <div class="faq-body overflow-hidden" style="max-height:0; transition: max-height 0.3s ease;">
-              <p class="font-data-mono text-[11px] text-on-surface-variant px-4 pb-4 leading-relaxed">Kirim foto via email ke ultrasfasilkom@unsika.ac.id dengan subject "Photo Submission" atau DM ke Instagram kami. Foto terbaik akan ditampilkan di gallery resmi.</p>
+              <p class="font-data-mono text-[11px] text-on-surface-variant px-4 pb-4 leading-relaxed">Send photos via email to ultrasfasilkom@unsika.ac.id with subject "Photo Submission" or DM our Instagram. The best shots will be featured in the official gallery.</p>
             </div>
           </div>
 
@@ -508,8 +542,8 @@
 <div id="success-toast" class="fixed bottom-8 right-8 z-[150] bg-surface-container border-2 border-tertiary-fixed-dim p-4 flex items-center gap-3 angular-cut shadow-lg">
   <span class="material-symbols-outlined text-tertiary-fixed-dim">check_circle</span>
   <div>
-    <p class="font-data-label text-[12px] uppercase text-primary">Pesan Terkirim!</p>
-    <p class="font-data-mono text-[10px] text-on-surface-variant">Kami akan membalas dalam 1×24 jam.</p>
+    <p class="font-data-label text-[12px] uppercase text-primary">Message Sent!</p>
+    <p class="font-data-mono text-[10px] text-on-surface-variant">We'll reply within 24 hours.</p>
   </div>
   <button id="close-toast" class="ml-4 text-outline-variant hover:text-primary transition-colors" aria-label="Close notification">
     <span class="material-symbols-outlined text-base">close</span>
