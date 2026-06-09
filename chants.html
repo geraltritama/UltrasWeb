@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CHANTS | ULTRAS FASILKOM</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link rel="icon" type="image/png" href="assets/img/Logo Bulat.png"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-container": "#e2e2e2",
+                    "on-primary-fixed": "#1a1c1c",
+                    "tertiary-fixed-dim": "#00e639",
+                    "secondary-fixed-dim": "#c6c6c6",
+                    "surface-container-low": "#1b1b1b",
+                    "on-tertiary": "#313030",
+                    "on-error": "#690005",
+                    "inverse-surface": "#e2e2e2",
+                    "surface": "#131313",
+                    "error": "#ffb4ab",
+                    "primary-fixed-dim": "#c6c6c7",
+                    "on-secondary-fixed": "#1a1c1c",
+                    "on-primary-fixed-variant": "#454747",
+                    "on-error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#1c1b1b",
+                    "on-secondary": "#2f3131",
+                    "surface-container-high": "#2a2a2a",
+                    "surface-tint": "#c6c6c7",
+                    "tertiary": "#ffffff",
+                    "surface-container-highest": "#353535",
+                    "tertiary-fixed": "#e5e2e1",
+                    "on-tertiary-fixed-variant": "#474746",
+                    "surface-bright": "#393939",
+                    "surface-container": "#1f1f1f",
+                    "on-tertiary-container": "#656464",
+                    "inverse-on-surface": "#303030",
+                    "on-secondary-fixed-variant": "#464747",
+                    "outline-variant": "#444748",
+                    "primary": "#ffffff",
+                    "error-container": "#93000a",
+                    "secondary-fixed": "#e3e2e2",
+                    "inverse-primary": "#5d5f5f",
+                    "secondary-container": "#484949",
+                    "secondary": "#c6c6c6",
+                    "on-surface": "#e2e2e2",
+                    "tertiary-container": "#e5e2e1",
+                    "primary-fixed": "#e2e2e2",
+                    "surface-container-lowest": "#0e0e0e",
+                    "on-primary-container": "#636565",
+                    "background": "#131313",
+                    "on-secondary-container": "#b8b8b8",
+                    "surface-dim": "#131313",
+                    "on-background": "#e2e2e2",
+                    "outline": "#8e9192",
+                    "surface-variant": "#353535",
+                    "on-surface-variant": "#c4c7c8",
+                    "on-primary": "#2f3131"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "8px",
+                    "unit": "4px",
+                    "margin-desktop": "40px",
+                    "margin-mobile": "16px",
+                    "container-max": "1280px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "headline-xl": ["Space Grotesk"],
+                    "headline-lg": ["Space Grotesk"],
+                    "headline-lg-mobile": ["Space Grotesk"],
+                    "headline-md": ["Space Grotesk"],
+                    "label-caps": ["JetBrains Mono"],
+                    "data-label": ["JetBrains Mono"],
+                    "data-mono": ["JetBrains Mono"],
+                    "body-lg": ["Geist"],
+                    "body-md": ["Geist"],
+                    "code-sm": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "headline-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "data-label": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "data-mono": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "code-sm": ["13px", {"lineHeight": "1.4", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        header nav a {
+            position: relative;
+        }
+        header nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #00e639;
+            transition: width 0.25s ease;
+        }
+        header nav a:hover::after {
+            width: 100%;
+        }
+        .angular-cut {
+            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%);
+        }
+        .grid-bg {
+            background-image: radial-gradient(circle, #444748 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+
+        body {
+            background-color: #000000;
+            color: #e2e2e2;
+            overflow-x: hidden;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(0, 230, 57, 0.4);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px rgba(0, 230, 57, 0.08), 0 0 0 1px rgba(0, 230, 57, 0.15);
+        }
+
+        .glass-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent, transparent);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        .soundwave-bar {
+            width: 3px;
+            background: #ffffff;
+            border-radius: 1px;
+            transition: height 0.2s ease;
+        }
+
+        .glow-hover:hover {
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            filter: brightness(1.2);
+        }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: #333; }
+        ::-webkit-scrollbar-thumb:hover { background: #555; }
+
+        /* Seekbar */
+        .seek-bar {
+            -webkit-appearance: none;
+            appearance: none;
+            height: 2px;
+            background: linear-gradient(to right, rgba(255,255,255,0.7) var(--seek-progress, 0%), rgba(255,255,255,0.12) var(--seek-progress, 0%));
+            outline: none;
+            cursor: pointer;
+            width: 100%;
+        }
+        .seek-bar::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 14px;
+            height: 14px;
+            background: #ffffff;
+            cursor: pointer;
+            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%);
+            transition: background 0.15s;
+        }
+        .seek-bar:hover::-webkit-slider-thumb { background: #00e639; }
+        .seek-bar::-moz-range-thumb {
+            width: 14px;
+            height: 14px;
+            background: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Modal */
+        #lyrics-modal { transition: opacity 0.25s ease; }
+        #modal-panel { transition: transform 0.25s ease; }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-background selection:bg-primary selection:text-surface">
+<!-- Header / TopAppBar -->
+<header class="sticky top-0 z-[100] border-b-2 border-outline bg-background/95 backdrop-blur-sm">
+<div class="flex justify-between items-center w-full px-[40px] py-4 max-w-[1280px] mx-auto h-20">
+<!-- Brand -->
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 angular-cut overflow-hidden flex-shrink-0">
+<img src="assets/img/Logo Bulat.png" alt="Ultras Fasilkom" class="w-full h-full object-cover">
+</div>
+<div class="hidden md:block">
+<h1 class="font-headline-md text-headline-md font-bold tracking-tighter text-primary">ULTRAS FASILKOM</h1>
+<p class="font-data-mono text-[10px] text-on-surface-variant uppercase tracking-widest">FASILKOM BELONGS TO US</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant font-data-label text-data-label hover:text-primary hover:bg-surface-container-highest transition-all duration-150 px-2 py-1" href="index.html">HOME</a>
+<a class="text-tertiary-fixed-dim border-b-2 border-tertiary-fixed-dim pb-1 font-data-label text-data-label transition-all duration-150" href="#">CHANTS</a>
+<a class="text-on-surface-variant font-data-label text-data-label hover:text-primary hover:bg-surface-container-highest transition-all duration-150 px-2 py-1" href="#">MERCHANDISE</a>
+<a class="text-on-surface-variant font-data-label text-data-label hover:text-primary hover:bg-surface-container-highest transition-all duration-150 px-2 py-1" href="#">GALLERY</a>
+<a class="text-on-surface-variant font-data-label text-data-label hover:text-primary hover:bg-surface-container-highest transition-all duration-150 px-2 py-1" href="#">CONTACT</a>
+</nav>
+<!-- Right: Button + Hamburger -->
+<div class="flex items-center justify-end gap-4 flex-shrink-0">
+<button class="hidden md:block bg-primary text-background px-6 py-3 font-headline-md font-bold uppercase angular-cut hover:bg-tertiary-fixed-dim transition-all duration-300">
+    JOIN REVOLUTION
+</button>
+<button id="hamburger-btn" class="md:hidden flex items-center justify-center w-10 h-10 text-primary hover:text-tertiary-fixed-dim transition-colors" aria-label="Toggle menu">
+<span class="material-symbols-outlined text-2xl" id="hamburger-icon">menu</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="md:hidden fixed left-0 right-0 z-[99] bg-background border-b-2 border-outline backdrop-blur-sm overflow-hidden" style="top:80px; max-height:0; opacity:0; transition: max-height 0.35s ease, opacity 0.25s ease;">
+<nav class="flex flex-col px-6 py-4 gap-1 max-w-[1280px] mx-auto">
+<a class="text-on-surface-variant font-data-label text-data-label py-4 border-b border-outline-variant/20 hover:text-primary transition-colors" href="index.html">HOME</a>
+<a class="text-tertiary-fixed-dim font-data-label text-data-label py-4 border-b border-outline-variant/20 tracking-wider" href="#">CHANTS</a>
+<a class="text-on-surface-variant font-data-label text-data-label py-4 border-b border-outline-variant/20 hover:text-primary transition-colors" href="#">MERCHANDISE</a>
+<a class="text-on-surface-variant font-data-label text-data-label py-4 border-b border-outline-variant/20 hover:text-primary transition-colors" href="#">GALLERY</a>
+<a class="text-on-surface-variant font-data-label text-data-label py-4 border-b border-outline-variant/20 hover:text-primary transition-colors" href="#">CONTACT</a>
+<div class="py-4">
+<button class="w-full bg-primary text-background py-3 font-headline-md font-bold uppercase angular-cut hover:bg-tertiary-fixed-dim transition-all duration-300">JOIN REVOLUTION</button>
+</div>
+</nav>
+</div>
+<main class="pt-8 pb-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<!-- Hero Section -->
+<section class="mb-16">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-base mb-8">
+<div>
+<span class="font-label-caps text-primary tracking-widest opacity-60">OUR ANTHEMS</span>
+<h1 class="font-headline-xl text-headline-xl mt-2">VOICE OF THE<br/><span class="text-primary">REVOLUTION</span></h1>
+</div>
+<div class="text-right hidden md:block">
+<p class="font-code-sm text-on-surface-variant max-w-xs">
+                        Audio archives featuring chants, songs, and supporter anthems of the Fasilkom Unsika Ultras.
+                    </p>
+</div>
+</div>
+<div class="w-full h-1 bg-white/5 relative overflow-hidden mb-12">
+<div class="absolute inset-0 bg-primary/20 animate-[pulse_2s_infinite]"></div>
+</div>
+</section>
+<!-- Chant Grid (Bento Style Layout) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Featured Chant 1 -->
+<div class="lg:col-span-8 glass-card p-8 group overflow-hidden">
+<div class="flex flex-col md:flex-row justify-between items-start gap-gutter mb-8">
+<div class="flex-1">
+<div class="flex items-center gap-base mb-4">
+<span class="bg-white text-black px-2 py-0.5 font-label-caps text-[10px]">CORE ANTHEM</span>
+<span class="font-code-sm opacity-40">#001</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg uppercase mb-2">ANTHEM FASILKOM "HEY FASILKOM"</h2>
+<p class="font-body-lg text-primary/80 italic">"Berdiri dan takan berhenti..."</p>
+</div>
+<!-- Audio Player Integrated -->
+<div class="w-full md:w-72 bg-white/5 border border-white/10 p-4 self-center">
+<div class="flex items-center gap-4 mb-3">
+<button class="w-12 h-12 flex items-center justify-center bg-white text-black transition-transform active:scale-90">
+<span class="material-symbols-outlined">play_arrow</span>
+</button>
+<div class="flex-1">
+<div class="h-8 flex items-end gap-[2px] justify-between px-2">
+<div class="soundwave-bar h-1/2"></div><div class="soundwave-bar h-3/4"></div><div class="soundwave-bar h-full"></div><div class="soundwave-bar h-1/2"></div><div class="soundwave-bar h-2/3"></div><div class="soundwave-bar h-4/5"></div><div class="soundwave-bar h-1/3"></div><div class="soundwave-bar h-3/4"></div><div class="soundwave-bar h-full"></div><div class="soundwave-bar h-2/3"></div><div class="soundwave-bar h-1/2"></div>
+</div>
+</div>
+</div>
+<div class="flex justify-between font-code-sm text-xs opacity-60">
+<span>0:00</span>
+<span>3:42</span>
+</div>
+</div>
+</div>
+<div class="h-64 relative rounded overflow-hidden">
+<img class="w-full h-full object-cover opacity-30 grayscale group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdAlPmpMg49-YnlnRRWEN-4JHHNx3iBT-M1l8JGCJDZAQxyfNwCWtgN9xFLY0rvrF0Eilr9AczeXrYOUK6dWxBV6dW1F8X6xr3UQOj7UmUHl6IHgre23SA34O0QV8Z_pNNiXjpXnAtKfO_IwgXb0tyGbSpC3JaL1pJf0PFUA5o9zsRboZNo5dYF-hb39sTBEbbaqDNAmgLC-WZQCA47f9a3k8C0hoT4L5rQh_pttjNVCvSW_itKJPZxErY_lOTk6QjxxQvDBXkgdI9" alt="Crowd in stadium"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+</div>
+</div>
+<!-- Chant 2-3 Stack -->
+<div class="lg:col-span-4 flex flex-col gap-gutter">
+<div class="glass-card p-6 flex-1 hover:bg-white/10 transition-colors cursor-pointer">
+<span class="font-code-sm opacity-40 mb-2 block">#002</span>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile mb-4">KAMI DATANG LAGI</h3>
+<p class="font-body-md opacity-60 line-clamp-2 italic">"KAMI DATANG LAGI..."</p>
+</div>
+<div class="glass-card p-6 flex-1 bg-white/10">
+<span class="font-code-sm opacity-40 mb-2 block">#003</span>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile mb-4">KITA DUKUNG FASILKOM</h3>
+<div class="bg-black/40 p-4 mb-4 border-l-2 border-primary">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">play_circle</span>
+<div class="flex-1 h-[2px] bg-white/20 relative">
+<div class="absolute left-0 top-0 h-full w-1/3 bg-primary shadow-[0_0_8px_white]"></div>
+</div>
+<span class="font-code-sm text-[10px]">01:14</span>
+</div>
+</div>
+<p class="font-body-md opacity-60 italic">"Angkat tangan mu..."</p>
+</div>
+</div>
+<!-- Standard List with Cyberpunk treatment -->
+<div class="lg:col-span-12 mt-8">
+<div class="flex items-center gap-base mb-12">
+<div class="h-[1px] flex-1 bg-white/10"></div>
+<h3 class="font-label-caps text-primary text-xl">ARCHIVE DATA SET</h3>
+<div class="h-[1px] flex-1 bg-white/10"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- 4 -->
+<div class="glass-card p-6 hover:shadow-[0_0_20px_rgba(255,255,255,0.05)] transition-all">
+<div class="flex justify-between items-start mb-6">
+<span class="font-code-sm opacity-40">#004</span>
+<span class="material-symbols-outlined text-primary animate-pulse">graphic_eq</span>
+</div>
+<h4 class="font-headline-lg-mobile text-xl mb-3">HARI INI KITA BAHAGIA</h4>
+<p class="font-body-md opacity-60 mb-6 italic">"HARI INI KITA BAHAGIAA..."</p>
+<div class="w-full h-1 bg-white/5 overflow-hidden"><div class="h-full bg-white/10 w-0"></div></div>
+</div>
+<!-- 5 -->
+<div class="glass-card p-6">
+<div class="flex justify-between items-start mb-6">
+<span class="font-code-sm opacity-40">#005</span>
+<span class="material-symbols-outlined text-primary animate-pulse">graphic_eq</span>
+</div>
+<h4 class="font-headline-lg-mobile text-xl mb-3">BERSATU DALAM JIWA</h4>
+<p class="font-body-md opacity-60 mb-6 italic">"BERSATU DALAM JIWA..."</p>
+<div class="w-full h-1 bg-white/5"></div>
+</div>
+<!-- 6 -->
+<div class="glass-card p-6">
+<div class="flex justify-between items-start mb-6">
+<span class="font-code-sm opacity-40">#006</span>
+<span class="material-symbols-outlined text-primary animate-pulse">graphic_eq</span>
+</div>
+<h4 class="font-headline-lg-mobile text-xl mb-3">WE LOVE FASILKOM, WE DO!</h4>
+<p class="font-body-md opacity-60 mb-6 italic">"We Love Fasilkom We DO!..."</p>
+<div class="w-full h-1 bg-white/5"></div>
+</div>
+<!-- 7 -->
+<div class="glass-card p-6">
+<div class="flex justify-between items-start mb-6">
+<span class="font-code-sm opacity-40">#007</span>
+<span class="material-symbols-outlined text-primary animate-pulse">graphic_eq</span>
+</div>
+<h4 class="font-headline-lg-mobile text-xl mb-3">DISINI TI DISANA SI</h4>
+<p class="font-body-md opacity-60 mb-6 italic">"Disini TI...."</p>
+<div class="w-full h-1 bg-white/5"></div>
+</div>
+<!-- 8 Audio Player -->
+<div class="glass-card p-6 border-primary/30">
+<div class="flex justify-between items-start mb-6">
+<span class="font-code-sm text-primary">#008</span>
+<span class="material-symbols-outlined text-primary animate-pulse">graphic_eq</span>
+</div>
+<h4 class="font-headline-lg-mobile text-xl mb-3">SATUKAN SUARA</h4>
+<p class="font-body-md opacity-60 mb-6 italic">"Bukalah matamu..."</p>
+<div class="flex items-center gap-3">
+<button class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">play_circle</button>
+<div class="flex-1 flex gap-1 items-end h-6">
+<div class="bg-primary w-1 h-3"></div><div class="bg-primary w-1 h-5"></div><div class="bg-primary w-1 h-2"></div><div class="bg-primary w-1 h-4"></div><div class="bg-primary w-1 h-6"></div><div class="bg-primary/40 w-1 h-2"></div><div class="bg-primary/40 w-1 h-3"></div><div class="bg-primary/40 w-1 h-1"></div>
+</div>
+</div>
+</div>
+<!-- 9 -->
+<div class="glass-card p-6">
+<div class="flex justify-between items-start mb-6">
+<span class="font-code-sm opacity-40">#009</span>
+<span class="material-symbols-outlined text-primary animate-pulse">graphic_eq</span>
+</div>
+<h4 class="font-headline-lg-mobile text-xl mb-3">DARI WAKTU KE WAKTU</h4>
+<p class="font-body-md opacity-60 mb-6 italic">"Dari waktu ke waktu..."</p>
+<div class="w-full h-1 bg-white/5"></div>
+</div>
+</div>
+</div>
+<!-- Row 2 of Cards -->
+<div class="lg:col-span-12 grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- 10 Audio Player -->
+<div class="glass-card p-8 flex flex-col md:flex-row gap-gutter">
+<div class="flex-1">
+<span class="font-code-sm opacity-40 mb-2 block">#010</span>
+<h4 class="font-headline-lg-mobile mb-4">JAYALAH SELALU FASILKOMKU</h4>
+<p class="font-body-md opacity-60 mb-4 italic">"Semua terjadi karena cinta..."</p>
+</div>
+<div class="w-full md:w-64 flex flex-col justify-center gap-2">
+<div class="flex items-center justify-between font-code-sm mb-2">
+<span>REPLAYING_NOW</span>
+<span class="text-primary">LIVE_STREAM</span>
+</div>
+<div class="h-12 bg-white/5 flex items-center px-4 gap-4">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">play_arrow</span>
+<div class="flex-1 flex items-end h-6 gap-[2px]">
+<div class="bg-primary w-full h-[10%]"></div><div class="bg-primary w-full h-[60%]"></div><div class="bg-primary w-full h-[40%]"></div><div class="bg-primary w-full h-[90%]"></div><div class="bg-primary w-full h-[20%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- 11 Audio Player -->
+<div class="glass-card p-8 flex flex-col md:flex-row gap-gutter">
+<div class="flex-1">
+<span class="font-code-sm opacity-40 mb-2 block">#011</span>
+<h4 class="font-headline-lg-mobile mb-4">TENTANG HARGA DIRI</h4>
+<p class="font-body-md opacity-60 mb-4 italic">"Disaat engkau berlari..."</p>
+</div>
+<div class="w-full md:w-64 flex flex-col justify-center gap-2">
+<div class="h-12 border border-primary/20 flex items-center px-4 gap-4">
+<span class="material-symbols-outlined text-primary">pause</span>
+<div class="flex-1 relative h-1 bg-white/10">
+<div class="absolute inset-y-0 left-0 w-3/4 bg-primary"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Remaining List -->
+<div class="lg:col-span-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- 12 -->
+<div class="glass-card p-6 border-l-4 border-primary/50">
+<h4 class="font-label-caps text-xs opacity-50 mb-2">#012 | AUDIO</h4>
+<p class="font-body-lg font-bold mb-2">FASILKOM KEBANGGAAN KITA</p>
+<p class="font-code-sm opacity-40 mb-4 italic">"Lihatlah kawan..."</p>
+<button class="flex items-center gap-2 text-primary font-label-caps text-[10px] tracking-widest hover:translate-x-1 transition-transform">
+<span class="material-symbols-outlined text-sm">play_arrow</span> LOAD_AUDIO
+                    </button>
+</div>
+<!-- 13 -->
+<div class="glass-card p-6 border-l-4 border-primary/50">
+<h4 class="font-label-caps text-xs opacity-50 mb-2">#013 | AUDIO</h4>
+<p class="font-body-lg font-bold mb-2">FASILKOM SELALU BERSAMA</p>
+<p class="font-code-sm opacity-40 mb-4 italic">"Amarah senyum and air mata..."</p>
+<button class="flex items-center gap-2 text-primary font-label-caps text-[10px] tracking-widest hover:translate-x-1 transition-transform">
+<span class="material-symbols-outlined text-sm">play_arrow</span> LOAD_AUDIO
+                    </button>
+</div>
+<!-- 14 -->
+<div class="glass-card p-6 opacity-60 hover:opacity-100 transition-opacity">
+<h4 class="font-label-caps text-xs opacity-50 mb-2">#014 | TEXT</h4>
+<p class="font-body-lg font-bold mb-2">FASILKOM TOGETHER MOVING FORWARD</p>
+<p class="font-code-sm opacity-40 italic">"Syalalala syalala..."</p>
+</div>
+<!-- 15 -->
+<div class="glass-card p-6 opacity-60 hover:opacity-100 transition-opacity">
+<h4 class="font-label-caps text-xs opacity-50 mb-2">#015 | TEXT</h4>
+<p class="font-body-lg font-bold mb-2">KU YAKIN KAU BISA</p>
+<p class="font-code-sm opacity-40 italic">"KU YAKIN KAU BISA..."</p>
+</div>
+<!-- 16 -->
+<div class="glass-card p-6 border-l-4 border-primary/50">
+<h4 class="font-label-caps text-xs opacity-50 mb-2">#016 | AUDIO</h4>
+<p class="font-body-lg font-bold mb-2">ASSALAMUALAIKUM</p>
+<p class="font-code-sm opacity-40 mb-4 italic">"Assalamualaikum..."</p>
+<button class="flex items-center gap-2 text-primary font-label-caps text-[10px] tracking-widest hover:translate-x-1 transition-transform">
+<span class="material-symbols-outlined text-sm">play_arrow</span> PLAY_AUDIO
+</button>
+</div>
+<!-- 17 -->
+<div class="glass-card p-6 border-l-4 border-primary/50">
+<h4 class="font-label-caps text-xs opacity-50 mb-2">#017 | AUDIO</h4>
+<p class="font-body-lg font-bold mb-2">ABU ATRIBUTKU</p>
+<p class="font-code-sm opacity-40 mb-4 italic">"Abu atributku..."</p>
+<button class="flex items-center gap-2 text-primary font-label-caps text-[10px] tracking-widest hover:translate-x-1 transition-transform">
+<span class="material-symbols-outlined text-sm">play_arrow</span> PLAY_AUDIO
+</button>
+</div>
+<!-- 18 -->
+<div class="glass-card p-6 border-l-4 border-primary/50">
+<h4 class="font-label-caps text-xs opacity-50 mb-2">#018 | AUDIO</h4>
+<p class="font-body-lg font-bold mb-2">ARKAVIRA DISINI</p>
+<p class="font-code-sm opacity-40 mb-4 italic">"Arkavira disini..."</p>
+<button class="flex items-center gap-2 text-primary font-label-caps text-[10px] tracking-widest hover:translate-x-1 transition-transform">
+<span class="material-symbols-outlined text-sm">play_arrow</span> PLAY_AUDIO
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t-2 border-outline mt-20 relative overflow-hidden">
+<div class="absolute inset-0 opacity-5 pointer-events-none grid-bg"></div>
+<div class="w-full pt-12 pb-6 px-[40px] max-w-[1280px] mx-auto relative z-10">
+<div class="flex flex-col md:flex-row justify-between items-start gap-8 mb-12">
+<!-- Left Footer Section -->
+<div class="max-w-2xl">
+<p class="font-data-mono text-data-mono text-primary leading-relaxed tracking-tight">
+                    OFFICIAL SUPPORTER OF THE FACULTY OF COMPUTER SCIENCE, UNSIKA FASILKOM BELONGS TO US! | #WSFTG
+                </p>
+</div>
+<!-- Right Footer Section -->
+<div class="flex items-center gap-4 text-right">
+<div class="flex flex-col">
+<span class="font-data-mono text-data-mono text-primary uppercase">
+© 2026 UFK UNSIKA. All Rights Reserved.</span>
+</div>
+<div class="w-12 h-12 border-2 border-primary rounded-full flex items-center justify-center animate-[spin_10s_linear_infinite]">
+<span class="material-symbols-outlined text-primary text-xl">token</span>
+</div>
+</div>
+</div>
+<!-- Bottom Center Links -->
+<div class="flex flex-wrap justify-center items-center gap-x-8 gap-y-4 border-t border-outline-variant/30 pt-8">
+<a class="font-data-mono text-[12px] text-on-surface-variant hover:text-tertiary-fixed transition-colors flex items-center gap-2 group" href="#">
+<span class="opacity-0 group-hover:opacity-100 transition-opacity">&gt;</span> INSTAGRAM
+</a>
+<a class="font-data-mono text-[12px] text-on-surface-variant hover:text-tertiary-fixed transition-colors flex items-center gap-2 group" href="#">
+<span class="opacity-0 group-hover:opacity-100 transition-opacity">&gt;</span> TWITTER
+</a>
+<a class="font-data-mono text-[12px] text-on-surface-variant hover:text-tertiary-fixed transition-colors flex items-center gap-2 group" href="#">
+<span class="opacity-0 group-hover:opacity-100 transition-opacity">&gt;</span> DISCORD
+</a>
+<a class="font-data-mono text-[12px] text-on-surface-variant hover:text-tertiary-fixed transition-colors flex items-center gap-2 group" href="#">
+<span class="opacity-0 group-hover:opacity-100 transition-opacity">&gt;</span> TIKTOK
+</a>
+</div>
+</div>
+</footer>
+<!-- LYRICS PLAYER MODAL -->
+<div id="lyrics-modal" class="fixed inset-0 z-[200] flex items-center justify-center p-4 opacity-0 pointer-events-none">
+    <div id="modal-backdrop" class="absolute inset-0 bg-black/85 backdrop-blur-sm"></div>
+    <div id="modal-panel" class="relative z-10 w-full max-w-2xl bg-[#131313] border-2 border-[#8e9192] flex flex-col overflow-hidden" style="max-height:88vh; clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%); transform: translateY(20px);">
+
+        <!-- Header -->
+        <div class="flex justify-between items-start p-6 border-b-2 border-[#8e9192] flex-shrink-0">
+            <div>
+                <div class="flex items-center gap-3 mb-2">
+                    <span id="modal-number" class="font-data-mono text-[11px] text-[#00e639] tracking-[0.2em]"></span>
+                    <span id="modal-badge" class="hidden bg-white text-black px-2 py-0.5 font-data-mono text-[10px] tracking-wider"></span>
+                </div>
+                <h2 id="modal-title" class="font-headline-md text-headline-md text-white uppercase tracking-tight leading-tight"></h2>
+            </div>
+            <button id="modal-close" class="text-[#8e9192] hover:text-white transition-colors ml-6 mt-1 flex-shrink-0">
+                <span class="material-symbols-outlined text-2xl">close</span>
+            </button>
+        </div>
+
+        <!-- Audio Player -->
+        <div class="px-6 py-5 border-b border-white/10 flex-shrink-0">
+            <audio id="modal-audio" preload="none"></audio>
+            <div class="flex items-center gap-5">
+                <button id="play-pause-btn" class="w-12 h-12 flex items-center justify-center flex-shrink-0 bg-white text-black hover:bg-[#00e639] transition-colors" style="clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);">
+                    <span class="material-symbols-outlined text-2xl" id="play-icon" style="font-variation-settings:'FILL' 1;">play_arrow</span>
+                </button>
+                <div class="flex-1 flex flex-col gap-2">
+                    <input type="range" id="seek-bar" class="seek-bar" value="0" min="0" max="100" step="0.1">
+                    <div class="flex justify-between">
+                        <span id="current-time" class="font-data-mono text-[10px] text-[#c4c7c8]">0:00</span>
+                        <span id="track-duration" class="font-data-mono text-[10px] text-[#c4c7c8]">0:00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center gap-2 mt-3">
+                <span id="status-dot" class="w-2 h-2 rounded-full bg-[#444748] flex-shrink-0"></span>
+                <span id="status-text" class="font-data-mono text-[10px] text-[#444748] tracking-wider uppercase">AUDIO_FILE: PENDING_UPLOAD</span>
+            </div>
+        </div>
+
+        <!-- Lyrics -->
+        <div class="flex-1 overflow-y-auto min-h-0">
+            <div class="px-6 pt-5 pb-2 sticky top-0 bg-[#131313]/95 backdrop-blur-sm">
+                <div class="flex items-center gap-3">
+                    <div class="h-px flex-1 bg-white/10"></div>
+                    <span class="font-data-mono text-[10px] text-[#00e639] tracking-[0.2em] uppercase">// LYRICS_DATA</span>
+                    <div class="h-px flex-1 bg-white/10"></div>
+                </div>
+            </div>
+            <div id="modal-lyrics" class="px-8 pb-10 pt-4 font-body-lg text-[18px] text-[#e2e2e2] leading-[2.2] whitespace-pre-line text-center"></div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Ambient Glow -->
+<div class="fixed top-0 left-0 w-full h-full pointer-events-none -z-10 opacity-30">
+<div class="absolute top-1/4 -left-20 w-96 h-96 bg-primary/10 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-primary/5 rounded-full blur-[150px]"></div>
+</div>
+<script>
+        // Hamburger Menu
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const hamburgerIcon = document.getElementById('hamburger-icon');
+        let menuOpen = false;
+
+        hamburgerBtn.addEventListener('click', () => {
+            menuOpen = !menuOpen;
+            mobileMenu.style.maxHeight = menuOpen ? '500px' : '0';
+            mobileMenu.style.opacity = menuOpen ? '1' : '0';
+            hamburgerIcon.textContent = menuOpen ? 'close' : 'menu';
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuOpen = false;
+                mobileMenu.style.maxHeight = '0';
+                mobileMenu.style.opacity = '0';
+                hamburgerIcon.textContent = 'menu';
+            });
+        });
+
+const bars = document.querySelectorAll('.soundwave-bar');
+        setInterval(() => {
+            bars.forEach(bar => {
+                const height = Math.floor(Math.random() * 80) + 20;
+                bar.style.height = `${height}%`;
+            });
+        }, 150);
+
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mouseenter', () => {
+                btn.style.opacity = '0.7';
+                setTimeout(() => btn.style.opacity = '1', 50);
+                setTimeout(() => btn.style.opacity = '0.8', 100);
+                setTimeout(() => btn.style.opacity = '1', 150);
+            });
+        });
+    </script>
+<script>
+    // ── TRACK DATA ──────────────────────────────────────────
+    const tracks = [
+        {
+            number: '#001', badge: 'CORE ANTHEM',
+            title: 'ANTHEM FASILKOM "HEY FASILKOM"',
+            audio: 'assets/audio/001_hey_fasilkom.mp3',
+            lyrics: `Berdiri dan takan berhenti...
+Tuk dukung kebanggaan kami...
+Fasilkom sampai mati...
+
+Hey Fasilkom... Hey Fasilkom...
+Selamanya di hati...`
+        },
+        { number: '#002', title: 'KAMI DATANG LAGI', audio: '', lyrics: `KAMI DATANG LAGI...
+DENGAN SATU TUJUAN...
+UNTUK KEBANGGAAN...
+FASILKOM JUARA...
+KAMI DISINI UNTUKMU...` },
+        { number: '#003', title: 'KITA DUKUNG FASILKOM', audio: '', lyrics: `Angkat tangan mu...
+Satukan suara mu...
+Fasilkom yang utama...
+Takkan pernah menyerah...
+Berjuanglah pahlawanku...` },
+        { number: '#004', title: 'HARI INI KITA BAHAGIA', audio: '', lyrics: `HARI INI KITA BAHAGIAA...
+DENGAN KEMENANGAN INI...
+FASILKOM SELALU DI HATI...
+TERUSLAH BERJAYA...
+SATU FASILKOM SATU!` },
+        { number: '#005', title: 'BERSATU DALAM JIWA', audio: '', lyrics: `BERSATU DALAM JIWA...
+BERJANJI TUK SETIA...
+FASILKOM SELAMANYA...
+TAK AKAN TERPISAHKAN...
+OLEH APAPUN JUGA...` },
+        { number: '#006', title: 'WE LOVE FASILKOM, WE DO!', audio: 'assets/audio/lv_0_20250726110537.mp4', lyrics: `We Love Fasilkom We DO!...
+We Love Fasilkom We DO!...
+Fasilkom we love you...
+Oh Fasilkom we love you...
+Forever and ever...` },
+        { number: '#007', title: 'DISINI TI DISANA SI', audio: 'assets/audio/lv_0_20250726110737.mp4', lyrics: `Disini TI… Disana SI…
+Dimana-mana kita saudara...
+Fasilkom satu... Fasilkom maju...
+Tak ada beda... Kita Fasilkom...
+Unsika Bangga!` },
+        { number: '#008', title: 'SATUKAN SUARA', audio: '', lyrics: `Bukalah matamu...
+Dengarlah suara kami...
+Bergetar stadion ini...
+Demi Fasilkom tercinta...
+Berjuanglah sekuat tenaga...` },
+        { number: '#009', title: 'DARI WAKTU KE WAKTU', audio: '', lyrics: `Dari waktu ke waktu...
+Cintaku takkan pudar...
+Untukmu Fasilkomku...
+Mengalir dalam darah...
+Abadi selamanya...` },
+        { number: '#010', title: 'JAYALAH SELALU FASILKOMKU', audio: '', lyrics: `Semua terjadi karena cinta...
+Semua terjadi karena rasa...
+Jayalah selalu Fasilkomku...
+Kibarkan bendera mu...
+Di puncak tertinggi dunia...` },
+        { number: '#011', title: 'TENTANG HARGA DIRI', audio: '', lyrics: `Disaat engkau berlari...
+Mengejar mimpi-mimpi...
+Fasilkom harga diri...
+Takkan kami biarkan...
+Engkau berjuang sendiri...` },
+        { number: '#012', title: 'FASILKOM KEBANGGAAN KITA', audio: '', lyrics: `Lihatlah kawan...
+Kemenangan di depan mata...
+Fasilkom kebanggaan kita...
+Bersama kita bisa...
+Taklukan segala rintangan...` },
+        { number: '#013', title: 'FASILKOM SELALU BERSAMA', audio: '', lyrics: `Amarah senyum...
+Tawa dan tangis kita lalui...
+Fasilkom selalu bersama...
+Dalam suka dan duka...
+Satu rasa satu jiwa...` },
+        { number: '#014', title: 'FASILKOM TOGETHER MOVING FORWARD', audio: 'assets/audio/lv_0_20250726110917.mp4', lyrics: `Syalalala syalala...
+Fasilkom together moving forward...
+Syalalala syalala...
+Terus maju tak gentar...
+Sampai garis finish...` },
+        { number: '#015', title: 'KU YAKIN KAU BISA', audio: '', lyrics: `KU YAKIN KAU BISA...
+KU YAKIN KAU JUARA...
+FASILKOM KU TERCINTA...
+DOA KAMI UNTUKMU...
+SALAM SATU FASILKOM!` },
+        { number: '#016', title: 'ASSALAMUALAIKUM', audio: 'assets/audio/lv_0_20250726111040.mp4', lyrics: `[ Lirik segera hadir ]` },
+        { number: '#017', title: 'ABU ATRIBUTKU', audio: 'assets/audio/lv_0_20250726111201.mp4', lyrics: `[ Lirik segera hadir ]` },
+        { number: '#018', title: 'ARKAVIRA DISINI', audio: 'assets/audio/lv_0_20250726111336.mp4', lyrics: `[ Lirik segera hadir ]` },
+    ];
+
+    // ── ELEMENTS ────────────────────────────────────────────
+    const lyricsModal  = document.getElementById('lyrics-modal');
+    const modalPanel   = document.getElementById('modal-panel');
+    const modalAudio   = document.getElementById('modal-audio');
+    const playPauseBtn = document.getElementById('play-pause-btn');
+    const playIcon     = document.getElementById('play-icon');
+    const seekBar      = document.getElementById('seek-bar');
+    const currentTimeEl = document.getElementById('current-time');
+    const durationEl   = document.getElementById('track-duration');
+    const statusDot    = document.getElementById('status-dot');
+    const statusText   = document.getElementById('status-text');
+
+    function fmt(s) {
+        if (!s || isNaN(s)) return '0:00';
+        return Math.floor(s / 60) + ':' + String(Math.floor(s % 60)).padStart(2, '0');
+    }
+
+    function openTrack(idx) {
+        const t = tracks[idx];
+        if (!t) return;
+        document.getElementById('modal-number').textContent = t.number;
+        const badge = document.getElementById('modal-badge');
+        if (t.badge) { badge.textContent = t.badge; badge.classList.remove('hidden'); }
+        else badge.classList.add('hidden');
+        document.getElementById('modal-title').textContent = t.title;
+        document.getElementById('modal-lyrics').textContent = t.lyrics;
+
+        modalAudio.pause();
+        seekBar.value = 0;
+        seekBar.style.setProperty('--seek-progress', '0%');
+        currentTimeEl.textContent = '0:00';
+        durationEl.textContent = '0:00';
+        playIcon.textContent = 'play_arrow';
+
+        if (t.audio) {
+            modalAudio.src = t.audio;
+            modalAudio.load();
+            statusDot.style.background = '#00e639';
+            statusText.textContent = 'AUDIO_READY — CLICK PLAY';
+            statusText.style.color = '#00e639';
+        } else {
+            modalAudio.src = '';
+            statusDot.style.background = '#444748';
+            statusText.textContent = 'AUDIO_FILE: PENDING_UPLOAD';
+            statusText.style.color = '#444748';
+        }
+
+        lyricsModal.classList.remove('opacity-0', 'pointer-events-none');
+        modalPanel.style.transform = 'translateY(0)';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        lyricsModal.classList.add('opacity-0', 'pointer-events-none');
+        modalPanel.style.transform = 'translateY(20px)';
+        document.body.style.overflow = '';
+        modalAudio.pause();
+        playIcon.textContent = 'play_arrow';
+    }
+
+    playPauseBtn.addEventListener('click', () => {
+        if (!modalAudio.src) return;
+        if (modalAudio.paused) {
+            modalAudio.play().then(() => {
+                playIcon.textContent = 'pause';
+                statusDot.style.background = '#00e639';
+                statusText.textContent = 'NOW_PLAYING';
+                statusText.style.color = '#00e639';
+            }).catch(() => {
+                statusText.textContent = 'ERROR: AUDIO_NOT_FOUND';
+                statusText.style.color = '#ff4444';
+                statusDot.style.background = '#ff4444';
+            });
+        } else {
+            modalAudio.pause();
+            playIcon.textContent = 'play_arrow';
+            statusDot.style.background = '#8e9192';
+            statusText.textContent = 'PAUSED';
+            statusText.style.color = '#8e9192';
+        }
+    });
+
+    modalAudio.addEventListener('timeupdate', () => {
+        if (!modalAudio.duration) return;
+        const pct = (modalAudio.currentTime / modalAudio.duration) * 100;
+        seekBar.value = pct;
+        seekBar.style.setProperty('--seek-progress', pct + '%');
+        currentTimeEl.textContent = fmt(modalAudio.currentTime);
+    });
+
+    modalAudio.addEventListener('loadedmetadata', () => {
+        durationEl.textContent = fmt(modalAudio.duration);
+    });
+
+    modalAudio.addEventListener('ended', () => {
+        playIcon.textContent = 'play_arrow';
+        seekBar.value = 0;
+        seekBar.style.setProperty('--seek-progress', '0%');
+        statusDot.style.background = '#8e9192';
+        statusText.textContent = 'PLAYBACK_COMPLETE';
+        statusText.style.color = '#8e9192';
+    });
+
+    seekBar.addEventListener('input', () => {
+        if (modalAudio.duration) {
+            modalAudio.currentTime = (seekBar.value / 100) * modalAudio.duration;
+            seekBar.style.setProperty('--seek-progress', seekBar.value + '%');
+        }
+    });
+
+    document.getElementById('modal-close').addEventListener('click', closeModal);
+    document.getElementById('modal-backdrop').addEventListener('click', closeModal);
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') closeModal();
+        if (e.key === ' ' && !lyricsModal.classList.contains('pointer-events-none')) {
+            e.preventDefault();
+            playPauseBtn.click();
+        }
+    });
+
+    // Wire semua glass-card → openTrack + tambah lyrics badge + music_note
+    document.querySelectorAll('.glass-card').forEach((card, i) => {
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', () => openTrack(i));
+
+        // Tambah graphic_eq ke card yang belum punya
+        const hasEq = Array.from(card.querySelectorAll('.material-symbols-outlined'))
+            .some(el => el.textContent.trim() === 'graphic_eq');
+        if (!hasEq) {
+            const eq = document.createElement('span');
+            eq.className = 'material-symbols-outlined text-primary animate-pulse';
+            eq.style.cssText = 'position:absolute; top:16px; right:16px; pointer-events:none;';
+            eq.textContent = 'graphic_eq';
+            card.appendChild(eq);
+        }
+
+        const badge = document.createElement('div');
+        badge.className = 'flex items-center gap-2 mt-4 pt-3 border-t border-white/10';
+        badge.innerHTML = `<span class="material-symbols-outlined text-[14px] text-[#00e639]" style="font-variation-settings:'FILL' 1;">lyrics</span><span class="font-data-mono text-[10px] text-[#00e639] tracking-widest uppercase">Lihat Lirik</span><span class="font-data-mono text-[10px] text-[#00e639] ml-auto opacity-60">→</span>`;
+        card.appendChild(badge);
+    });
+</script>
+</body></html>

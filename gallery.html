@@ -1,0 +1,568 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>ULTRA_SYSTEM_V.01 // GALLERY</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/img/Logo Bulat.png">
+<style>
+    @keyframes scanline {
+        0% { transform: translateY(-100%); }
+        100% { transform: translateY(100%); }
+    }
+    @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.3; }
+    }
+    @keyframes marquee {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+    .scanline-effect {
+        position: fixed; top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: linear-gradient(to bottom, transparent 50%, rgba(0, 230, 57, 0.02) 50%);
+        background-size: 100% 4px;
+        pointer-events: none; z-index: 50;
+    }
+    header nav a { position: relative; }
+    header nav a::after {
+        content: ''; position: absolute; bottom: -4px; left: 0;
+        width: 0; height: 2px; background: #00e639;
+        transition: width 0.25s ease;
+    }
+    header nav a:hover::after { width: 100%; }
+    .angular-cut {
+        clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%);
+    }
+    .angular-cut-sm {
+        clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+    }
+    .grid-bg {
+        background-image: radial-gradient(circle, #444748 1px, transparent 1px);
+        background-size: 32px 32px;
+    }
+    .marquee-container { display: flex; overflow: hidden; white-space: nowrap; }
+    .marquee-content { display: flex; animation: marquee 20s linear infinite; }
+    .blink { animation: blink 1s step-end infinite; }
+
+    /* Gallery specific */
+    .gallery-item .gallery-img {
+        transition: transform 0.5s ease, filter 0.5s ease;
+        filter: grayscale(60%) brightness(0.6);
+    }
+    .gallery-item:hover .gallery-img {
+        transform: scale(1.08);
+        filter: grayscale(0%) brightness(0.85);
+    }
+    .gallery-item .overlay {
+        transition: opacity 0.3s ease;
+        opacity: 0;
+    }
+    .gallery-item:hover .overlay { opacity: 1; }
+
+    /* Lightbox */
+    #lightbox {
+        display: none;
+        position: fixed; inset: 0; z-index: 200;
+        background: rgba(0,0,0,0.92);
+        backdrop-filter: blur(8px);
+        align-items: center;
+        justify-content: center;
+    }
+    #lightbox.active { display: flex; }
+    #lightbox img {
+        max-width: 90vw;
+        max-height: 80vh;
+        object-fit: contain;
+        border: 2px solid #444748;
+    }
+    .filter-btn.active {
+        background-color: #00e639;
+        color: #131313;
+        border-color: #00e639;
+    }
+</style>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "error": "#ffb4ab",
+                  "primary": "#ffffff",
+                  "on-tertiary-fixed": "#002203",
+                  "tertiary": "#ffffff",
+                  "outline": "#8e9192",
+                  "surface-dim": "#131313",
+                  "on-secondary": "#223240",
+                  "on-primary": "#2f3131",
+                  "tertiary-fixed": "#72ff70",
+                  "tertiary-fixed-dim": "#00e639",
+                  "surface-container-high": "#2a2a2a",
+                  "on-error-container": "#ffdad6",
+                  "inverse-surface": "#e2e2e2",
+                  "error-container": "#93000a",
+                  "outline-variant": "#444748",
+                  "on-secondary-container": "#a7b7c8",
+                  "surface-container-low": "#1b1b1b",
+                  "surface-container": "#1f1f1f",
+                  "background": "#131313",
+                  "inverse-primary": "#5d5f5f",
+                  "on-background": "#e2e2e2",
+                  "surface-bright": "#393939",
+                  "secondary": "#b8c8da",
+                  "surface-container-lowest": "#0e0e0e",
+                  "on-primary-fixed": "#1a1c1c",
+                  "on-surface": "#e2e2e2",
+                  "surface-container-highest": "#353535",
+                  "inverse-on-surface": "#303030",
+                  "surface": "#131313",
+                  "on-primary-container": "#636565",
+                  "on-error": "#690005",
+                  "on-surface-variant": "#c4c7c8",
+                  "primary-fixed-dim": "#c6c6c7",
+                  "surface-variant": "#353535",
+                  "primary-fixed": "#e2e2e2",
+                  "primary-container": "#e2e2e2",
+                  "surface-tint": "#c6c6c7",
+                  "secondary-container": "#394857"
+          },
+          "spacing": {
+                  "unit": "4px",
+                  "margin-desktop": "40px",
+                  "container-max": "1280px",
+                  "gutter": "16px",
+                  "margin-mobile": "16px"
+          },
+          "fontFamily": {
+                  "headline-lg": ["Space Grotesk"],
+                  "body-md": ["Space Grotesk"],
+                  "data-label": ["JetBrains Mono"],
+                  "body-lg": ["Space Grotesk"],
+                  "headline-xl-mobile": ["Space Grotesk"],
+                  "headline-md": ["Space Grotesk"],
+                  "headline-xl": ["Space Grotesk"],
+                  "data-mono": ["JetBrains Mono"]
+          },
+          "fontSize": {
+                  "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                  "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                  "data-label": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                  "body-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                  "headline-xl-mobile": ["32px", {"lineHeight": "1.1", "fontWeight": "700"}],
+                  "headline-md": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                  "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                  "data-mono": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+</script>
+</head>
+<body class="bg-background text-on-surface selection:bg-tertiary-fixed-dim selection:text-on-tertiary-fixed font-body-md overflow-x-hidden grid-bg">
+<div class="scanline-effect"></div>
+
+<!-- Header -->
+<header class="sticky top-0 z-[100] border-b-2 border-outline bg-background/95 backdrop-blur-sm">
+<div class="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto h-20">
+  <div class="flex items-center gap-4">
+    <div class="w-16 h-16 angular-cut overflow-hidden flex-shrink-0">
+      <img src="assets/img/Logo Bulat.png" alt="Ultras Fasilkom" class="w-full h-full object-cover">
+    </div>
+    <div class="hidden md:block">
+      <h1 class="font-headline-md text-headline-md font-bold tracking-tighter text-primary">ULTRAS FASILKOM</h1>
+      <p class="font-data-mono text-[10px] text-on-surface-variant uppercase tracking-widest">FASILKOM BELONGS TO US</p>
+    </div>
+  </div>
+  <nav class="hidden md:flex items-center gap-8">
+    <a class="text-on-surface-variant font-data-label text-data-label hover:text-primary hover:bg-surface-container-highest transition-all duration-150 px-2 py-1" href="index.html">HOME</a>
+    <a class="text-on-surface-variant font-data-label text-data-label hover:text-primary hover:bg-surface-container-highest transition-all duration-150 px-2 py-1" href="chants.html">CHANTS</a>
+    <a class="text-on-surface-variant font-data-label text-data-label hover:text-primary hover:bg-surface-container-highest transition-all duration-150 px-2 py-1" href="merchandise.html">MERCHANDISE</a>
+    <a class="text-tertiary-fixed-dim border-b-2 border-tertiary-fixed-dim pb-1 font-data-label text-data-label transition-all duration-150" href="gallery.html">GALLERY</a>
+    <a class="text-on-surface-variant font-data-label text-data-label hover:text-primary hover:bg-surface-container-highest transition-all duration-150 px-2 py-1" href="contact.html">CONTACT</a>
+  </nav>
+  <div class="flex items-center justify-end gap-4 flex-shrink-0">
+    <div class="hidden lg:flex flex-col items-end">
+      <span class="font-data-mono text-headline-md text-primary leading-none" id="digital-clock">00:00:00</span>
+      <span class="font-data-mono italic text-[10px] text-on-surface-variant">TOGETHER MOVING FORWARD !</span>
+    </div>
+    <button id="hamburger-btn" class="md:hidden flex items-center justify-center w-10 h-10 text-primary hover:text-tertiary-fixed-dim transition-colors" aria-label="Toggle menu">
+      <span class="material-symbols-outlined text-2xl" id="hamburger-icon">menu</span>
+    </button>
+  </div>
+</div>
+</header>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="md:hidden fixed left-0 right-0 z-[99] bg-background border-b-2 border-outline backdrop-blur-sm overflow-hidden" style="top:80px; max-height:0; opacity:0; transition: max-height 0.35s ease, opacity 0.25s ease;">
+<nav class="flex flex-col px-6 py-4 gap-1 max-w-container-max mx-auto">
+  <a class="text-on-surface-variant font-data-label text-data-label py-4 border-b border-outline-variant/20 hover:text-primary transition-colors" href="index.html">HOME</a>
+  <a class="text-on-surface-variant font-data-label text-data-label py-4 border-b border-outline-variant/20 hover:text-primary transition-colors" href="chants.html">CHANTS</a>
+  <a class="text-on-surface-variant font-data-label text-data-label py-4 border-b border-outline-variant/20 hover:text-primary transition-colors" href="merchandise.html">MERCHANDISE</a>
+  <a class="text-tertiary-fixed-dim font-data-label text-data-label py-4 border-b border-outline-variant/20" href="gallery.html">GALLERY</a>
+  <a class="text-on-surface-variant font-data-label text-data-label py-4 hover:text-primary transition-colors" href="contact.html">CONTACT</a>
+</nav>
+</div>
+
+<main>
+<!-- Page Header -->
+<section class="relative py-16 border-b-4 border-primary overflow-hidden">
+  <div class="absolute inset-0 opacity-10 pointer-events-none font-data-mono text-[10px] text-tertiary-fixed-dim p-4 overflow-hidden select-none leading-relaxed">
+    GALLERY_MODULE_LOADED... [OK] &nbsp; PHOTO_COUNT: 16 &nbsp; RESOLUTION: MAX &nbsp; INDEXING_EVENTS... DONE &nbsp; MEMORY_BANK: ONLINE &nbsp; ARCHIVE_STATUS: SYNCED
+  </div>
+  <div class="relative z-10 max-w-container-max mx-auto px-margin-desktop">
+    <div class="flex flex-col md:flex-row justify-between items-end gap-6">
+      <div>
+        <span class="font-data-mono text-[10px] text-tertiary-fixed-dim tracking-[0.3em] uppercase block mb-2">// MODULE_03 — ARCHIVE</span>
+        <h1 class="font-headline-xl text-[56px] md:text-[80px] leading-[0.85] font-extrabold uppercase tracking-tighter text-primary italic">
+          PHOTO<br><span class="text-tertiary-fixed-dim">GALLERY</span>
+        </h1>
+      </div>
+      <div class="flex flex-col items-end gap-2">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim blink"></span>
+          <span class="font-data-mono text-[10px] text-tertiary-fixed-dim">ARCHIVE: ONLINE</span>
+        </div>
+        <p class="font-data-mono text-[11px] text-on-surface-variant max-w-xs text-right">Dokumentasi momen berharga Ultras Fasilkom.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Filter Bar -->
+<section class="py-8 px-margin-desktop max-w-container-max mx-auto border-b border-outline-variant/30">
+  <div class="flex flex-wrap items-center gap-3">
+    <span class="font-data-mono text-[10px] text-on-surface-variant mr-2">FILTER_BY:</span>
+    <button class="filter-btn active font-data-label text-[11px] uppercase tracking-widest px-4 py-2 border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-200 angular-cut-sm" data-filter="all">ALL</button>
+    <button class="filter-btn font-data-label text-[11px] uppercase tracking-widest px-4 py-2 border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-200 angular-cut-sm" data-filter="matchday">MATCHDAY</button>
+    <button class="filter-btn font-data-label text-[11px] uppercase tracking-widest px-4 py-2 border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-200 angular-cut-sm" data-filter="latihan">LATIHAN</button>
+    <button class="filter-btn font-data-label text-[11px] uppercase tracking-widest px-4 py-2 border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-200 angular-cut-sm" data-filter="event">EVENT</button>
+    <div class="ml-auto hidden md:flex items-center gap-2 font-data-mono text-[10px] text-on-surface-variant">
+      <span class="material-symbols-outlined text-sm">photo_library</span>
+      <span id="photo-count">16</span> PHOTOS
+    </div>
+  </div>
+</section>
+
+<!-- Gallery Grid -->
+<section class="py-12 px-margin-desktop max-w-container-max mx-auto">
+  <div class="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4" id="gallery-grid">
+
+    <!-- Photo 1 — tall -->
+    <div class="gallery-item break-inside-avoid relative overflow-hidden border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-300 cursor-pointer" data-category="matchday" data-label="MATCHDAY_01.JPG" data-src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&q=80">
+      <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&q=80" alt="Matchday crowd" class="gallery-img w-full h-auto block">
+      <div class="overlay absolute inset-0 bg-background/70 flex flex-col items-center justify-center gap-2">
+        <span class="material-symbols-outlined text-primary text-3xl">open_in_full</span>
+        <span class="font-data-mono text-[9px] text-tertiary-fixed-dim uppercase">MATCHDAY_01.JPG</span>
+      </div>
+      <div class="absolute bottom-0 left-0 right-0 p-2 bg-background/80 translate-y-full group-hover:translate-y-0 transition-transform">
+        <p class="font-data-mono text-[9px] text-tertiary-fixed-dim uppercase">MATCHDAY_01.JPG</p>
+      </div>
+    </div>
+
+    <!-- Photo 2 -->
+    <div class="gallery-item break-inside-avoid relative overflow-hidden border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-300 cursor-pointer" data-category="event" data-label="EVENT_GATHERING_01.JPG" data-src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80">
+      <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80" alt="Event gathering" class="gallery-img w-full h-auto block">
+      <div class="overlay absolute inset-0 bg-background/70 flex flex-col items-center justify-center gap-2">
+        <span class="material-symbols-outlined text-primary text-3xl">open_in_full</span>
+        <span class="font-data-mono text-[9px] text-tertiary-fixed-dim uppercase">EVENT_01.JPG</span>
+      </div>
+    </div>
+
+    <!-- Photo 3 -->
+    <div class="gallery-item break-inside-avoid relative overflow-hidden border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-300 cursor-pointer" data-category="latihan" data-label="LATIHAN_CAPO_01.JPG" data-src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=800&q=80">
+      <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=600&q=80" alt="Latihan capo" class="gallery-img w-full h-auto block">
+      <div class="overlay absolute inset-0 bg-background/70 flex flex-col items-center justify-center gap-2">
+        <span class="material-symbols-outlined text-primary text-3xl">open_in_full</span>
+        <span class="font-data-mono text-[9px] text-tertiary-fixed-dim uppercase">LATIHAN_01.JPG</span>
+      </div>
+    </div>
+
+    <!-- Photo 4 -->
+    <div class="gallery-item break-inside-avoid relative overflow-hidden border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-300 cursor-pointer" data-category="matchday" data-label="STADIUM_FLARE.JPG" data-src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=800&q=80">
+      <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=600&q=80" alt="Stadium flare" class="gallery-img w-full h-auto block">
+      <div class="overlay absolute inset-0 bg-background/70 flex flex-col items-center justify-center gap-2">
+        <span class="material-symbols-outlined text-primary text-3xl">open_in_full</span>
+        <span class="font-data-mono text-[9px] text-tertiary-fixed-dim uppercase">STADIUM_FLARE.JPG</span>
+      </div>
+    </div>
+
+    <!-- Photo 5 — tall -->
+    <div class="gallery-item break-inside-avoid relative overflow-hidden border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-300 cursor-pointer" data-category="matchday" data-label="TRIBUN_UTARA_01.JPG" data-src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=800&q=80">
+      <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=600&q=80" alt="Tribun utara" class="gallery-img w-full h-auto block">
+      <div class="overlay absolute inset-0 bg-background/70 flex flex-col items-center justify-center gap-2">
+        <span class="material-symbols-outlined text-primary text-3xl">open_in_full</span>
+        <span class="font-data-mono text-[9px] text-tertiary-fixed-dim uppercase">TRIBUN_UTARA.JPG</span>
+      </div>
+    </div>
+
+    <!-- Photo 6 -->
+    <div class="gallery-item break-inside-avoid relative overflow-hidden border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-300 cursor-pointer" data-category="event" data-label="NOBAR_01.JPG" data-src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=800&q=80">
+      <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=600&q=80" alt="Nobar event" class="gallery-img w-full h-auto block">
+      <div class="overlay absolute inset-0 bg-background/70 flex flex-col items-center justify-center gap-2">
+        <span class="material-symbols-outlined text-primary text-3xl">open_in_full</span>
+        <span class="font-data-mono text-[9px] text-tertiary-fixed-dim uppercase">NOBAR_01.JPG</span>
+      </div>
+    </div>
+
+    <!-- Photo 7 -->
+    <div class="gallery-item break-inside-avoid relative overflow-hidden border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-300 cursor-pointer" data-category="latihan" data-label="DRUM_SECTION_01.JPG" data-src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=80">
+      <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&q=80" alt="Drum section" class="gallery-img w-full h-auto block">
+      <div class="overlay absolute inset-0 bg-background/70 flex flex-col items-center justify-center gap-2">
+        <span class="material-symbols-outlined text-primary text-3xl">open_in_full</span>
+        <span class="font-data-mono text-[9px] text-tertiary-fixed-dim uppercase">DRUM_SECTION.JPG</span>
+      </div>
+    </div>
+
+    <!-- Photo 8 -->
+    <div class="gallery-item break-inside-avoid relative overflow-hidden border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-300 cursor-pointer" data-category="matchday" data-label="MARCH_IN_01.JPG" data-src="https://images.unsplash.com/photo-1547833400-604c06a2b368?w=800&q=80">
+      <img src="https://images.unsplash.com/photo-1547833400-604c06a2b368?w=600&q=80" alt="March in" class="gallery-img w-full h-auto block">
+      <div class="overlay absolute inset-0 bg-background/70 flex flex-col items-center justify-center gap-2">
+        <span class="material-symbols-outlined text-primary text-3xl">open_in_full</span>
+        <span class="font-data-mono text-[9px] text-tertiary-fixed-dim uppercase">MARCH_IN_01.JPG</span>
+      </div>
+    </div>
+
+    <!-- Photo 9 -->
+    <div class="gallery-item break-inside-avoid relative overflow-hidden border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-300 cursor-pointer" data-category="event" data-label="ANNIVERSARY_01.JPG" data-src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80">
+      <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600&q=80" alt="Anniversary event" class="gallery-img w-full h-auto block">
+      <div class="overlay absolute inset-0 bg-background/70 flex flex-col items-center justify-center gap-2">
+        <span class="material-symbols-outlined text-primary text-3xl">open_in_full</span>
+        <span class="font-data-mono text-[9px] text-tertiary-fixed-dim uppercase">ANNIVERSARY.JPG</span>
+      </div>
+    </div>
+
+    <!-- Photo 10 -->
+    <div class="gallery-item break-inside-avoid relative overflow-hidden border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-300 cursor-pointer" data-category="latihan" data-label="CHOREOGRAPHY_01.JPG" data-src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=800&q=80">
+      <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80" alt="Choreography practice" class="gallery-img w-full h-auto block">
+      <div class="overlay absolute inset-0 bg-background/70 flex flex-col items-center justify-center gap-2">
+        <span class="material-symbols-outlined text-primary text-3xl">open_in_full</span>
+        <span class="font-data-mono text-[9px] text-tertiary-fixed-dim uppercase">CHOREO_01.JPG</span>
+      </div>
+    </div>
+
+    <!-- Photo 11 -->
+    <div class="gallery-item break-inside-avoid relative overflow-hidden border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-300 cursor-pointer" data-category="matchday" data-label="BANNER_DEPLOYMENT.JPG" data-src="https://images.unsplash.com/photo-1529768167801-9173d94c2a42?w=800&q=80">
+      <img src="https://images.unsplash.com/photo-1529768167801-9173d94c2a42?w=600&q=80" alt="Banner deployment" class="gallery-img w-full h-auto block">
+      <div class="overlay absolute inset-0 bg-background/70 flex flex-col items-center justify-center gap-2">
+        <span class="material-symbols-outlined text-primary text-3xl">open_in_full</span>
+        <span class="font-data-mono text-[9px] text-tertiary-fixed-dim uppercase">BANNER.JPG</span>
+      </div>
+    </div>
+
+    <!-- Photo 12 -->
+    <div class="gallery-item break-inside-avoid relative overflow-hidden border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-300 cursor-pointer" data-category="event" data-label="CHARITY_RUN.JPG" data-src="https://images.unsplash.com/photo-1513128034602-7814ccaddd4e?w=800&q=80">
+      <img src="https://images.unsplash.com/photo-1513128034602-7814ccaddd4e?w=600&q=80" alt="Charity run" class="gallery-img w-full h-auto block">
+      <div class="overlay absolute inset-0 bg-background/70 flex flex-col items-center justify-center gap-2">
+        <span class="material-symbols-outlined text-primary text-3xl">open_in_full</span>
+        <span class="font-data-mono text-[9px] text-tertiary-fixed-dim uppercase">CHARITY_RUN.JPG</span>
+      </div>
+    </div>
+
+    <!-- Photo 13 -->
+    <div class="gallery-item break-inside-avoid relative overflow-hidden border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-300 cursor-pointer" data-category="matchday" data-label="VICTORY_PARADE.JPG" data-src="https://images.unsplash.com/photo-1521537634581-0dced2fee2ef?w=800&q=80">
+      <img src="https://images.unsplash.com/photo-1521537634581-0dced2fee2ef?w=600&q=80" alt="Victory parade" class="gallery-img w-full h-auto block">
+      <div class="overlay absolute inset-0 bg-background/70 flex flex-col items-center justify-center gap-2">
+        <span class="material-symbols-outlined text-primary text-3xl">open_in_full</span>
+        <span class="font-data-mono text-[9px] text-tertiary-fixed-dim uppercase">VICTORY.JPG</span>
+      </div>
+    </div>
+
+    <!-- Photo 14 -->
+    <div class="gallery-item break-inside-avoid relative overflow-hidden border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-300 cursor-pointer" data-category="latihan" data-label="FLAG_WAVING.JPG" data-src="https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?w=800&q=80">
+      <img src="https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?w=600&q=80" alt="Flag waving practice" class="gallery-img w-full h-auto block">
+      <div class="overlay absolute inset-0 bg-background/70 flex flex-col items-center justify-center gap-2">
+        <span class="material-symbols-outlined text-primary text-3xl">open_in_full</span>
+        <span class="font-data-mono text-[9px] text-tertiary-fixed-dim uppercase">FLAG_WAVING.JPG</span>
+      </div>
+    </div>
+
+    <!-- Photo 15 -->
+    <div class="gallery-item break-inside-avoid relative overflow-hidden border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-300 cursor-pointer" data-category="event" data-label="MEET_GREET.JPG" data-src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80">
+      <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&q=80" alt="Meet and greet" class="gallery-img w-full h-auto block">
+      <div class="overlay absolute inset-0 bg-background/70 flex flex-col items-center justify-center gap-2">
+        <span class="material-symbols-outlined text-primary text-3xl">open_in_full</span>
+        <span class="font-data-mono text-[9px] text-tertiary-fixed-dim uppercase">MEET_GREET.JPG</span>
+      </div>
+    </div>
+
+    <!-- Photo 16 -->
+    <div class="gallery-item break-inside-avoid relative overflow-hidden border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-300 cursor-pointer" data-category="matchday" data-label="TIFO_DISPLAY.JPG" data-src="https://images.unsplash.com/photo-1551958219-acbc595b9f00?w=800&q=80">
+      <img src="https://images.unsplash.com/photo-1551958219-acbc595b9f00?w=600&q=80" alt="Tifo display" class="gallery-img w-full h-auto block">
+      <div class="overlay absolute inset-0 bg-background/70 flex flex-col items-center justify-center gap-2">
+        <span class="material-symbols-outlined text-primary text-3xl">open_in_full</span>
+        <span class="font-data-mono text-[9px] text-tertiary-fixed-dim uppercase">TIFO_DISPLAY.JPG</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Submit Photo CTA -->
+  <div class="mt-16 border border-dashed border-outline-variant p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+    <div>
+      <span class="font-data-mono text-[10px] text-tertiary-fixed-dim block mb-1">// CONTRIBUTE_TO_ARCHIVE</span>
+      <h3 class="font-headline-md text-headline-md font-bold text-primary uppercase tracking-tight">Punya foto momen Ultras?</h3>
+      <p class="font-data-mono text-[11px] text-on-surface-variant mt-1">Kirim ke kami dan jadikan bagian dari dokumentasi resmi.</p>
+    </div>
+    <a href="contact.html" class="flex-shrink-0 border-2 border-primary text-primary px-8 py-3 font-data-label text-data-label uppercase angular-cut hover:bg-white/10 transition-all duration-300 flex items-center gap-3">
+      KIRIM FOTO <span class="material-symbols-outlined text-sm">upload</span>
+    </a>
+  </div>
+</section>
+</main>
+
+<!-- Lightbox -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <div class="relative flex flex-col items-center gap-4 p-4">
+    <div class="flex items-center justify-between w-full max-w-4xl mb-2">
+      <span class="font-data-mono text-[10px] text-tertiary-fixed-dim" id="lightbox-label">FILENAME.JPG</span>
+      <button id="lightbox-close" class="text-primary hover:text-tertiary-fixed-dim transition-colors" aria-label="Close">
+        <span class="material-symbols-outlined text-2xl">close</span>
+      </button>
+    </div>
+    <img id="lightbox-img" src="" alt="" class="max-w-[90vw] max-h-[75vh] object-contain border-2 border-outline-variant">
+    <div class="flex gap-6">
+      <button id="lightbox-prev" class="font-data-label text-[11px] uppercase text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2">
+        <span class="material-symbols-outlined text-sm">arrow_back</span> PREV
+      </button>
+      <button id="lightbox-next" class="font-data-label text-[11px] uppercase text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2">
+        NEXT <span class="material-symbols-outlined text-sm">arrow_forward</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t-2 border-outline mt-8 relative overflow-hidden">
+  <div class="absolute inset-0 opacity-5 pointer-events-none grid-bg"></div>
+  <div class="w-full pt-12 pb-6 px-margin-desktop max-w-container-max mx-auto relative z-10">
+    <div class="flex flex-col md:flex-row justify-between items-start gap-8 mb-12">
+      <div class="max-w-2xl">
+        <p class="font-data-mono text-data-mono text-primary leading-relaxed tracking-tight">
+          OFFICIAL SUPPORTER OF THE FACULTY OF COMPUTER SCIENCE, UNSIKA FASILKOM BELONGS TO US! | #WSFTG
+        </p>
+      </div>
+      <div class="flex items-center gap-4 text-right">
+        <div class="flex flex-col">
+          <span class="font-data-mono text-data-mono text-primary uppercase">© 2026 UFK UNSIKA. All Rights Reserved.</span>
+        </div>
+        <div class="w-12 h-12 border-2 border-primary rounded-full flex items-center justify-center animate-[spin_10s_linear_infinite]">
+          <span class="material-symbols-outlined text-primary text-xl">token</span>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-wrap justify-center items-center gap-x-8 gap-y-4 border-t border-outline-variant/30 pt-8">
+      <a class="font-data-mono text-[12px] text-on-surface-variant hover:text-tertiary-fixed transition-colors flex items-center gap-2 group" href="#">
+        <span class="opacity-0 group-hover:opacity-100 transition-opacity">&gt;</span> INSTAGRAM
+      </a>
+      <a class="font-data-mono text-[12px] text-on-surface-variant hover:text-tertiary-fixed transition-colors flex items-center gap-2 group" href="#">
+        <span class="opacity-0 group-hover:opacity-100 transition-opacity">&gt;</span> TWITTER
+      </a>
+      <a class="font-data-mono text-[12px] text-on-surface-variant hover:text-tertiary-fixed transition-colors flex items-center gap-2 group" href="#">
+        <span class="opacity-0 group-hover:opacity-100 transition-opacity">&gt;</span> DISCORD
+      </a>
+      <a class="font-data-mono text-[12px] text-on-surface-variant hover:text-tertiary-fixed transition-colors flex items-center gap-2 group" href="#">
+        <span class="opacity-0 group-hover:opacity-100 transition-opacity">&gt;</span> TIKTOK
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Hamburger Menu
+  const hamburgerBtn = document.getElementById('hamburger-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const hamburgerIcon = document.getElementById('hamburger-icon');
+  let menuOpen = false;
+  hamburgerBtn.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    mobileMenu.style.maxHeight = menuOpen ? '400px' : '0';
+    mobileMenu.style.opacity = menuOpen ? '1' : '0';
+    hamburgerIcon.textContent = menuOpen ? 'close' : 'menu';
+  });
+
+  // Digital Clock
+  function updateClock() {
+    const now = new Date();
+    const el = document.getElementById('digital-clock');
+    if (el) el.textContent = [now.getHours(),now.getMinutes(),now.getSeconds()].map(n=>String(n).padStart(2,'0')).join(':');
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
+
+  // Filter
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  let visibleItems = [];
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      visibleItems = [];
+      document.querySelectorAll('#gallery-grid > div[data-category]').forEach(p => {
+        const match = filter === 'all' || p.dataset.category === filter;
+        p.style.display = match ? 'block' : 'none';
+        if (match) visibleItems.push(p);
+      });
+      const el = document.getElementById('photo-count');
+      if (el) el.textContent = visibleItems.length;
+    });
+  });
+
+  // Build initial visible list
+  visibleItems = Array.from(document.querySelectorAll('#gallery-grid > div[data-category]'));
+
+  // Lightbox
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxLabel = document.getElementById('lightbox-label');
+  let currentIndex = 0;
+
+  function openLightbox(item) {
+    currentIndex = visibleItems.indexOf(item);
+    lightboxImg.src = item.dataset.src;
+    lightboxImg.alt = item.dataset.label;
+    lightboxLabel.textContent = item.dataset.label;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+    lightboxImg.src = '';
+  }
+
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    item.addEventListener('click', () => openLightbox(item));
+  });
+
+  document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox || e.target.closest('.relative') === null) closeLightbox(); });
+
+  document.getElementById('lightbox-prev').addEventListener('click', (e) => {
+    e.stopPropagation();
+    currentIndex = (currentIndex - 1 + visibleItems.length) % visibleItems.length;
+    const item = visibleItems[currentIndex];
+    lightboxImg.src = item.dataset.src;
+    lightboxLabel.textContent = item.dataset.label;
+  });
+
+  document.getElementById('lightbox-next').addEventListener('click', (e) => {
+    e.stopPropagation();
+    currentIndex = (currentIndex + 1) % visibleItems.length;
+    const item = visibleItems[currentIndex];
+    lightboxImg.src = item.dataset.src;
+    lightboxLabel.textContent = item.dataset.label;
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') document.getElementById('lightbox-next').click();
+    if (e.key === 'ArrowLeft') document.getElementById('lightbox-prev').click();
+  });
+</script>
+</body></html>

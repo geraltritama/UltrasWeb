@@ -1,0 +1,574 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>ULTRA_SYSTEM_V.01 // MERCHANDISE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/img/Logo Bulat.png">
+<style>
+    @keyframes scanline {
+        0% { transform: translateY(-100%); }
+        100% { transform: translateY(100%); }
+    }
+    @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.3; }
+    }
+    @keyframes marquee {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+    @keyframes glitch {
+        0% { clip-path: inset(10% 0 30% 0); transform: translate(-2px, 2px); }
+        20% { clip-path: inset(30% 0 10% 0); transform: translate(2px, -2px); }
+        40% { clip-path: inset(50% 0 5% 0); transform: translate(-1px, 1px); }
+        60% { clip-path: inset(0% 0 70% 0); transform: translate(1px, -1px); }
+        80% { clip-path: inset(20% 0 20% 0); transform: translate(-2px, 2px); }
+        100% { clip-path: inset(10% 0 30% 0); transform: translate(-2px, 2px); }
+    }
+    .scanline-effect {
+        position: fixed; top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: linear-gradient(to bottom, transparent 50%, rgba(0, 230, 57, 0.02) 50%);
+        background-size: 100% 4px;
+        pointer-events: none; z-index: 50;
+    }
+    header nav a { position: relative; }
+    header nav a::after {
+        content: ''; position: absolute; bottom: -4px; left: 0;
+        width: 0; height: 2px; background: #00e639;
+        transition: width 0.25s ease;
+    }
+    header nav a:hover::after { width: 100%; }
+    .angular-cut {
+        clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%);
+    }
+    .angular-cut-sm {
+        clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+    }
+    .grid-bg {
+        background-image: radial-gradient(circle, #444748 1px, transparent 1px);
+        background-size: 32px 32px;
+    }
+    .marquee-container { display: flex; overflow: hidden; white-space: nowrap; }
+    .marquee-content { display: flex; animation: marquee 20s linear infinite; }
+    .product-card:hover .product-img { transform: scale(1.05); filter: grayscale(0) brightness(0.8); }
+    .product-card .product-img { transition: transform 0.5s ease, filter 0.5s ease; filter: grayscale(30%) brightness(0.7); }
+    .filter-btn.active {
+        background-color: #00e639;
+        color: #131313;
+        border-color: #00e639;
+    }
+    .blink { animation: blink 1s step-end infinite; }
+</style>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "error": "#ffb4ab",
+                  "primary": "#ffffff",
+                  "on-tertiary-fixed": "#002203",
+                  "tertiary": "#ffffff",
+                  "outline": "#8e9192",
+                  "surface-dim": "#131313",
+                  "on-secondary": "#223240",
+                  "on-primary": "#2f3131",
+                  "tertiary-fixed": "#72ff70",
+                  "tertiary-fixed-dim": "#00e639",
+                  "surface-container-high": "#2a2a2a",
+                  "on-error-container": "#ffdad6",
+                  "inverse-surface": "#e2e2e2",
+                  "error-container": "#93000a",
+                  "on-tertiary-container": "#007518",
+                  "outline-variant": "#444748",
+                  "on-secondary-container": "#a7b7c8",
+                  "surface-container-low": "#1b1b1b",
+                  "surface-container": "#1f1f1f",
+                  "background": "#131313",
+                  "inverse-primary": "#5d5f5f",
+                  "on-background": "#e2e2e2",
+                  "surface-bright": "#393939",
+                  "secondary": "#b8c8da",
+                  "surface-container-lowest": "#0e0e0e",
+                  "on-primary-fixed": "#1a1c1c",
+                  "on-surface": "#e2e2e2",
+                  "surface-container-highest": "#353535",
+                  "inverse-on-surface": "#303030",
+                  "surface": "#131313",
+                  "on-primary-container": "#636565",
+                  "on-error": "#690005",
+                  "on-surface-variant": "#c4c7c8",
+                  "primary-fixed-dim": "#c6c6c7",
+                  "surface-variant": "#353535",
+                  "primary-fixed": "#e2e2e2",
+                  "primary-container": "#e2e2e2",
+                  "surface-tint": "#c6c6c7",
+                  "secondary-container": "#394857"
+          },
+          "spacing": {
+                  "unit": "4px",
+                  "margin-desktop": "40px",
+                  "container-max": "1280px",
+                  "gutter": "16px",
+                  "margin-mobile": "16px"
+          },
+          "fontFamily": {
+                  "headline-lg": ["Space Grotesk"],
+                  "body-md": ["Space Grotesk"],
+                  "data-label": ["JetBrains Mono"],
+                  "body-lg": ["Space Grotesk"],
+                  "headline-xl-mobile": ["Space Grotesk"],
+                  "headline-md": ["Space Grotesk"],
+                  "headline-xl": ["Space Grotesk"],
+                  "data-mono": ["JetBrains Mono"]
+          },
+          "fontSize": {
+                  "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                  "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                  "data-label": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                  "body-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                  "headline-xl-mobile": ["32px", {"lineHeight": "1.1", "fontWeight": "700"}],
+                  "headline-md": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                  "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                  "data-mono": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+</script>
+</head>
+<body class="bg-background text-on-surface selection:bg-tertiary-fixed-dim selection:text-on-tertiary-fixed font-body-md overflow-x-hidden grid-bg">
+<div class="scanline-effect"></div>
+
+<!-- Header -->
+<header class="sticky top-0 z-[100] border-b-2 border-outline bg-background/95 backdrop-blur-sm">
+<div class="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto h-20">
+  <div class="flex items-center gap-4">
+    <div class="w-16 h-16 angular-cut overflow-hidden flex-shrink-0">
+      <img src="assets/img/Logo Bulat.png" alt="Ultras Fasilkom" class="w-full h-full object-cover">
+    </div>
+    <div class="hidden md:block">
+      <h1 class="font-headline-md text-headline-md font-bold tracking-tighter text-primary">ULTRAS FASILKOM</h1>
+      <p class="font-data-mono text-[10px] text-on-surface-variant uppercase tracking-widest">FASILKOM BELONGS TO US</p>
+    </div>
+  </div>
+  <nav class="hidden md:flex items-center gap-8">
+    <a class="text-on-surface-variant font-data-label text-data-label hover:text-primary hover:bg-surface-container-highest transition-all duration-150 px-2 py-1" href="index.html">HOME</a>
+    <a class="text-on-surface-variant font-data-label text-data-label hover:text-primary hover:bg-surface-container-highest transition-all duration-150 px-2 py-1" href="chants.html">CHANTS</a>
+    <a class="text-tertiary-fixed-dim border-b-2 border-tertiary-fixed-dim pb-1 font-data-label text-data-label transition-all duration-150" href="merchandise.html">MERCHANDISE</a>
+    <a class="text-on-surface-variant font-data-label text-data-label hover:text-primary hover:bg-surface-container-highest transition-all duration-150 px-2 py-1" href="gallery.html">GALLERY</a>
+    <a class="text-on-surface-variant font-data-label text-data-label hover:text-primary hover:bg-surface-container-highest transition-all duration-150 px-2 py-1" href="contact.html">CONTACT</a>
+  </nav>
+  <div class="flex items-center justify-end gap-4 flex-shrink-0">
+    <div class="hidden lg:flex flex-col items-end">
+      <span class="font-data-mono text-headline-md text-primary leading-none" id="digital-clock">00:00:00</span>
+      <span class="font-data-mono italic text-[10px] text-on-surface-variant">TOGETHER MOVING FORWARD !</span>
+    </div>
+    <button id="hamburger-btn" class="md:hidden flex items-center justify-center w-10 h-10 text-primary hover:text-tertiary-fixed-dim transition-colors" aria-label="Toggle menu">
+      <span class="material-symbols-outlined text-2xl" id="hamburger-icon">menu</span>
+    </button>
+  </div>
+</div>
+</header>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="md:hidden fixed left-0 right-0 z-[99] bg-background border-b-2 border-outline backdrop-blur-sm overflow-hidden" style="top:80px; max-height:0; opacity:0; transition: max-height 0.35s ease, opacity 0.25s ease;">
+<nav class="flex flex-col px-6 py-4 gap-1 max-w-container-max mx-auto">
+  <a class="text-on-surface-variant font-data-label text-data-label py-4 border-b border-outline-variant/20 hover:text-primary transition-colors" href="index.html">HOME</a>
+  <a class="text-on-surface-variant font-data-label text-data-label py-4 border-b border-outline-variant/20 hover:text-primary transition-colors" href="chants.html">CHANTS</a>
+  <a class="text-tertiary-fixed-dim font-data-label text-data-label py-4 border-b border-outline-variant/20" href="merchandise.html">MERCHANDISE</a>
+  <a class="text-on-surface-variant font-data-label text-data-label py-4 border-b border-outline-variant/20 hover:text-primary transition-colors" href="gallery.html">GALLERY</a>
+  <a class="text-on-surface-variant font-data-label text-data-label py-4 hover:text-primary transition-colors" href="contact.html">CONTACT</a>
+</nav>
+</div>
+
+<main>
+<!-- Page Header Banner -->
+<section class="relative py-16 border-b-4 border-primary overflow-hidden">
+  <div class="absolute inset-0 opacity-10 pointer-events-none font-data-mono text-[10px] text-tertiary-fixed-dim p-4 overflow-hidden select-none">
+    LOADING_MERCHANDISE_CATALOG... [OK] &nbsp; STOCK_LEVELS: SYNCHRONIZED &nbsp; ITEM_COUNT: 08 &nbsp; PAYMENT_GATEWAY: SECURE &nbsp; ULTRAS_FASILKOM_STORE_V2
+  </div>
+  <div class="relative z-10 max-w-container-max mx-auto px-margin-desktop">
+    <div class="flex flex-col md:flex-row justify-between items-end gap-6">
+      <div>
+        <span class="font-data-mono text-[10px] text-tertiary-fixed-dim tracking-[0.3em] uppercase block mb-2">// MODULE_04 — STORE</span>
+        <h1 class="font-headline-xl text-[56px] md:text-[80px] leading-[0.85] font-extrabold uppercase tracking-tighter text-primary italic">
+          MERCH<br><span class="text-tertiary-fixed-dim">STORE</span>
+        </h1>
+      </div>
+      <div class="flex flex-col items-end gap-2">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim blink"></span>
+          <span class="font-data-mono text-[10px] text-tertiary-fixed-dim">STORE_STATUS: OPEN</span>
+        </div>
+        <p class="font-data-mono text-[11px] text-on-surface-variant max-w-xs text-right">Wear the identity. Represent FASILKOM everywhere.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Ticker -->
+<div class="bg-primary py-2 overflow-hidden border-b-2 border-outline">
+  <div class="marquee-container">
+    <div class="marquee-content flex gap-8">
+      <span class="text-background font-data-label font-bold text-sm px-4">FREE ONGKIR &gt; KARAWANG</span>
+      <span class="text-background font-data-label font-bold text-sm px-4">★</span>
+      <span class="text-background font-data-label font-bold text-sm px-4">STOCK TERBATAS — ORDER SEKARANG</span>
+      <span class="text-background font-data-label font-bold text-sm px-4">★</span>
+      <span class="text-background font-data-label font-bold text-sm px-4">SETIAP PEMBELIAN MENDUKUNG ULTRAS FASILKOM</span>
+      <span class="text-background font-data-label font-bold text-sm px-4">★</span>
+      <span class="text-background font-data-label font-bold text-sm px-4">FREE ONGKIR &gt; KARAWANG</span>
+      <span class="text-background font-data-label font-bold text-sm px-4">★</span>
+      <span class="text-background font-data-label font-bold text-sm px-4">STOCK TERBATAS — ORDER SEKARANG</span>
+      <span class="text-background font-data-label font-bold text-sm px-4">★</span>
+      <span class="text-background font-data-label font-bold text-sm px-4">SETIAP PEMBELIAN MENDUKUNG ULTRAS FASILKOM</span>
+      <span class="text-background font-data-label font-bold text-sm px-4">★</span>
+    </div>
+  </div>
+</div>
+
+<!-- Filter Bar -->
+<section class="py-8 px-margin-desktop max-w-container-max mx-auto border-b border-outline-variant/30">
+  <div class="flex flex-wrap items-center gap-3">
+    <span class="font-data-mono text-[10px] text-on-surface-variant mr-2">FILTER_BY:</span>
+    <button class="filter-btn active font-data-label text-[11px] uppercase tracking-widest px-4 py-2 border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-200 angular-cut-sm" data-filter="all">ALL ITEMS</button>
+    <button class="filter-btn font-data-label text-[11px] uppercase tracking-widest px-4 py-2 border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-200 angular-cut-sm" data-filter="jersey">JERSEY</button>
+    <button class="filter-btn font-data-label text-[11px] uppercase tracking-widest px-4 py-2 border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-200 angular-cut-sm" data-filter="aksesoris">AKSESORIS</button>
+    <button class="filter-btn font-data-label text-[11px] uppercase tracking-widest px-4 py-2 border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-200 angular-cut-sm" data-filter="headwear">HEADWEAR</button>
+    <div class="ml-auto hidden md:flex items-center gap-2 font-data-mono text-[10px] text-on-surface-variant">
+      <span class="material-symbols-outlined text-sm">inventory_2</span>
+      SHOWING <span class="text-tertiary-fixed-dim font-bold" id="item-count">8</span> ITEMS
+    </div>
+  </div>
+</section>
+
+<!-- Product Grid -->
+<section class="py-12 px-margin-desktop max-w-container-max mx-auto">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="product-grid">
+
+    <!-- Item 001 -->
+    <div class="product-card bg-surface-container border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-300 group cursor-pointer relative flex flex-col" data-category="jersey">
+      <div class="relative overflow-hidden aspect-square bg-surface-container-lowest">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=400&fit=crop&q=80" alt="Jersey Home" class="product-img w-full h-full object-cover">
+        <div class="absolute top-3 left-3">
+          <span class="font-data-mono text-[9px] bg-background/90 text-tertiary-fixed-dim px-2 py-1 border border-tertiary-fixed-dim/50">JERSEY</span>
+        </div>
+        <div class="absolute top-3 right-3">
+          <span class="font-data-mono text-[9px] bg-tertiary-fixed-dim text-background px-2 py-1 font-bold">IN STOCK</span>
+        </div>
+        <div class="absolute inset-0 bg-background/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+          <button class="bg-primary text-background px-6 py-2 font-data-label text-[11px] uppercase angular-cut-sm hover:bg-tertiary-fixed-dim transition-colors">
+            ORDER NOW
+          </button>
+        </div>
+      </div>
+      <div class="p-4 flex flex-col flex-grow">
+        <span class="font-data-mono text-[9px] text-on-surface-variant mb-1">SKU: UFK-JRS-001</span>
+        <h3 class="font-headline-md text-base font-bold uppercase tracking-tight text-primary mb-1">Jersey Home<br>Season 2026</h3>
+        <p class="font-data-mono text-[10px] text-on-surface-variant flex-grow">Full sublimation print · Dry-fit material · S/M/L/XL/XXL</p>
+        <div class="flex items-center justify-between mt-3 pt-3 border-t border-outline-variant/40">
+          <span class="font-data-mono text-lg font-bold text-tertiary-fixed-dim">Rp 185.000</span>
+          <span class="material-symbols-outlined text-outline-variant group-hover:text-tertiary-fixed-dim transition-colors text-xl">add_shopping_cart</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Item 002 -->
+    <div class="product-card bg-surface-container border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-300 group cursor-pointer relative flex flex-col" data-category="jersey">
+      <div class="relative overflow-hidden aspect-square bg-surface-container-lowest">
+        <img src="https://images.unsplash.com/photo-1620188526357-b83d0028a6af?w=400&h=400&fit=crop&q=80" alt="Jersey Away" class="product-img w-full h-full object-cover">
+        <div class="absolute top-3 left-3">
+          <span class="font-data-mono text-[9px] bg-background/90 text-tertiary-fixed-dim px-2 py-1 border border-tertiary-fixed-dim/50">JERSEY</span>
+        </div>
+        <div class="absolute top-3 right-3">
+          <span class="font-data-mono text-[9px] bg-tertiary-fixed-dim text-background px-2 py-1 font-bold">IN STOCK</span>
+        </div>
+        <div class="absolute inset-0 bg-background/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+          <button class="bg-primary text-background px-6 py-2 font-data-label text-[11px] uppercase angular-cut-sm hover:bg-tertiary-fixed-dim transition-colors">
+            ORDER NOW
+          </button>
+        </div>
+      </div>
+      <div class="p-4 flex flex-col flex-grow">
+        <span class="font-data-mono text-[9px] text-on-surface-variant mb-1">SKU: UFK-JRS-002</span>
+        <h3 class="font-headline-md text-base font-bold uppercase tracking-tight text-primary mb-1">Jersey Away<br>Season 2026</h3>
+        <p class="font-data-mono text-[10px] text-on-surface-variant flex-grow">Full sublimation print · Dry-fit material · S/M/L/XL/XXL</p>
+        <div class="flex items-center justify-between mt-3 pt-3 border-t border-outline-variant/40">
+          <span class="font-data-mono text-lg font-bold text-tertiary-fixed-dim">Rp 185.000</span>
+          <span class="material-symbols-outlined text-outline-variant group-hover:text-tertiary-fixed-dim transition-colors text-xl">add_shopping_cart</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Item 003 -->
+    <div class="product-card bg-surface-container border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-300 group cursor-pointer relative flex flex-col" data-category="aksesoris">
+      <div class="relative overflow-hidden aspect-square bg-surface-container-lowest">
+        <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=400&h=400&fit=crop&q=80" alt="Syal Ultras" class="product-img w-full h-full object-cover">
+        <div class="absolute top-3 left-3">
+          <span class="font-data-mono text-[9px] bg-background/90 text-on-surface-variant px-2 py-1 border border-outline-variant/50">AKSESORIS</span>
+        </div>
+        <div class="absolute top-3 right-3">
+          <span class="font-data-mono text-[9px] bg-tertiary-fixed-dim text-background px-2 py-1 font-bold">IN STOCK</span>
+        </div>
+        <div class="absolute inset-0 bg-background/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+          <button class="bg-primary text-background px-6 py-2 font-data-label text-[11px] uppercase angular-cut-sm hover:bg-tertiary-fixed-dim transition-colors">
+            ORDER NOW
+          </button>
+        </div>
+      </div>
+      <div class="p-4 flex flex-col flex-grow">
+        <span class="font-data-mono text-[9px] text-on-surface-variant mb-1">SKU: UFK-SYL-001</span>
+        <h3 class="font-headline-md text-base font-bold uppercase tracking-tight text-primary mb-1">Syal Ultras<br>Official 2026</h3>
+        <p class="font-data-mono text-[10px] text-on-surface-variant flex-grow">Knit weave · Double-sided print · 150cm × 20cm</p>
+        <div class="flex items-center justify-between mt-3 pt-3 border-t border-outline-variant/40">
+          <span class="font-data-mono text-lg font-bold text-tertiary-fixed-dim">Rp 75.000</span>
+          <span class="material-symbols-outlined text-outline-variant group-hover:text-tertiary-fixed-dim transition-colors text-xl">add_shopping_cart</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Item 004 -->
+    <div class="product-card bg-surface-container border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-300 group cursor-pointer relative flex flex-col" data-category="headwear">
+      <div class="relative overflow-hidden aspect-square bg-surface-container-lowest">
+        <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400&h=400&fit=crop&q=80" alt="Snapback Cap" class="product-img w-full h-full object-cover">
+        <div class="absolute top-3 left-3">
+          <span class="font-data-mono text-[9px] bg-background/90 text-on-surface-variant px-2 py-1 border border-outline-variant/50">HEADWEAR</span>
+        </div>
+        <div class="absolute top-3 right-3">
+          <span class="font-data-mono text-[9px] bg-tertiary-fixed-dim text-background px-2 py-1 font-bold">IN STOCK</span>
+        </div>
+        <div class="absolute inset-0 bg-background/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+          <button class="bg-primary text-background px-6 py-2 font-data-label text-[11px] uppercase angular-cut-sm hover:bg-tertiary-fixed-dim transition-colors">
+            ORDER NOW
+          </button>
+        </div>
+      </div>
+      <div class="p-4 flex flex-col flex-grow">
+        <span class="font-data-mono text-[9px] text-on-surface-variant mb-1">SKU: UFK-CAP-001</span>
+        <h3 class="font-headline-md text-base font-bold uppercase tracking-tight text-primary mb-1">Snapback Cap<br>Ultras Edition</h3>
+        <p class="font-data-mono text-[10px] text-on-surface-variant flex-grow">Embroidered logo · Adjustable snapback · One size fits all</p>
+        <div class="flex items-center justify-between mt-3 pt-3 border-t border-outline-variant/40">
+          <span class="font-data-mono text-lg font-bold text-tertiary-fixed-dim">Rp 95.000</span>
+          <span class="material-symbols-outlined text-outline-variant group-hover:text-tertiary-fixed-dim transition-colors text-xl">add_shopping_cart</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Item 005 -->
+    <div class="product-card bg-surface-container border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-300 group cursor-pointer relative flex flex-col" data-category="aksesoris">
+      <div class="relative overflow-hidden aspect-square bg-surface-container-lowest">
+        <img src="https://images.unsplash.com/photo-1527866959252-deab85ef7d1b?w=400&h=400&fit=crop&q=80" alt="Tote Bag" class="product-img w-full h-full object-cover">
+        <div class="absolute top-3 left-3">
+          <span class="font-data-mono text-[9px] bg-background/90 text-on-surface-variant px-2 py-1 border border-outline-variant/50">AKSESORIS</span>
+        </div>
+        <div class="absolute top-3 right-3">
+          <span class="font-data-mono text-[9px] bg-surface-container-high text-on-surface-variant px-2 py-1 font-bold border border-outline-variant">LIMITED</span>
+        </div>
+        <div class="absolute inset-0 bg-background/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+          <button class="bg-primary text-background px-6 py-2 font-data-label text-[11px] uppercase angular-cut-sm hover:bg-tertiary-fixed-dim transition-colors">
+            ORDER NOW
+          </button>
+        </div>
+      </div>
+      <div class="p-4 flex flex-col flex-grow">
+        <span class="font-data-mono text-[9px] text-on-surface-variant mb-1">SKU: UFK-BAG-001</span>
+        <h3 class="font-headline-md text-base font-bold uppercase tracking-tight text-primary mb-1">Totebag<br>Canvas Edition</h3>
+        <p class="font-data-mono text-[10px] text-on-surface-variant flex-grow">Canvas tebal · Sablon eco-print · 38cm × 42cm</p>
+        <div class="flex items-center justify-between mt-3 pt-3 border-t border-outline-variant/40">
+          <span class="font-data-mono text-lg font-bold text-tertiary-fixed-dim">Rp 55.000</span>
+          <span class="material-symbols-outlined text-outline-variant group-hover:text-tertiary-fixed-dim transition-colors text-xl">add_shopping_cart</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Item 006 -->
+    <div class="product-card bg-surface-container border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-300 group cursor-pointer relative flex flex-col" data-category="aksesoris">
+      <div class="relative overflow-hidden aspect-square bg-surface-container-lowest">
+        <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=400&fit=crop&q=80" alt="Stiker Pack" class="product-img w-full h-full object-cover">
+        <div class="absolute top-3 left-3">
+          <span class="font-data-mono text-[9px] bg-background/90 text-on-surface-variant px-2 py-1 border border-outline-variant/50">AKSESORIS</span>
+        </div>
+        <div class="absolute top-3 right-3">
+          <span class="font-data-mono text-[9px] bg-tertiary-fixed-dim text-background px-2 py-1 font-bold">IN STOCK</span>
+        </div>
+        <div class="absolute inset-0 bg-background/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+          <button class="bg-primary text-background px-6 py-2 font-data-label text-[11px] uppercase angular-cut-sm hover:bg-tertiary-fixed-dim transition-colors">
+            ORDER NOW
+          </button>
+        </div>
+      </div>
+      <div class="p-4 flex flex-col flex-grow">
+        <span class="font-data-mono text-[9px] text-on-surface-variant mb-1">SKU: UFK-STK-001</span>
+        <h3 class="font-headline-md text-base font-bold uppercase tracking-tight text-primary mb-1">Stiker Pack<br>Vol.1 (6 pcs)</h3>
+        <p class="font-data-mono text-[10px] text-on-surface-variant flex-grow">Waterproof vinyl · UV resistant · 6 desain eksklusif</p>
+        <div class="flex items-center justify-between mt-3 pt-3 border-t border-outline-variant/40">
+          <span class="font-data-mono text-lg font-bold text-tertiary-fixed-dim">Rp 25.000</span>
+          <span class="material-symbols-outlined text-outline-variant group-hover:text-tertiary-fixed-dim transition-colors text-xl">add_shopping_cart</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Item 007 -->
+    <div class="product-card bg-surface-container border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-300 group cursor-pointer relative flex flex-col" data-category="headwear">
+      <div class="relative overflow-hidden aspect-square bg-surface-container-lowest">
+        <img src="https://images.unsplash.com/photo-1556306535-0f09a537f0a3?w=400&h=400&fit=crop&q=80" alt="Beanie" class="product-img w-full h-full object-cover">
+        <div class="absolute top-3 left-3">
+          <span class="font-data-mono text-[9px] bg-background/90 text-on-surface-variant px-2 py-1 border border-outline-variant/50">HEADWEAR</span>
+        </div>
+        <div class="absolute top-3 right-3">
+          <span class="font-data-mono text-[9px] bg-surface-container-high text-on-surface-variant px-2 py-1 font-bold border border-outline-variant">LIMITED</span>
+        </div>
+        <div class="absolute inset-0 bg-background/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+          <button class="bg-primary text-background px-6 py-2 font-data-label text-[11px] uppercase angular-cut-sm hover:bg-tertiary-fixed-dim transition-colors">
+            ORDER NOW
+          </button>
+        </div>
+      </div>
+      <div class="p-4 flex flex-col flex-grow">
+        <span class="font-data-mono text-[9px] text-on-surface-variant mb-1">SKU: UFK-BNI-001</span>
+        <h3 class="font-headline-md text-base font-bold uppercase tracking-tight text-primary mb-1">Knit Beanie<br>Winter Edition</h3>
+        <p class="font-data-mono text-[10px] text-on-surface-variant flex-grow">Rajut akrilik tebal · Bordir emblem · One size</p>
+        <div class="flex items-center justify-between mt-3 pt-3 border-t border-outline-variant/40">
+          <span class="font-data-mono text-lg font-bold text-tertiary-fixed-dim">Rp 65.000</span>
+          <span class="material-symbols-outlined text-outline-variant group-hover:text-tertiary-fixed-dim transition-colors text-xl">add_shopping_cart</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Item 008 -->
+    <div class="product-card bg-surface-container border border-outline-variant hover:border-tertiary-fixed-dim transition-all duration-300 group cursor-pointer relative flex flex-col" data-category="jersey">
+      <div class="relative overflow-hidden aspect-square bg-surface-container-lowest">
+        <img src="https://images.unsplash.com/photo-1565084888279-aca607ecce0c?w=400&h=400&fit=crop&q=80" alt="Training Tee" class="product-img w-full h-full object-cover">
+        <div class="absolute top-3 left-3">
+          <span class="font-data-mono text-[9px] bg-background/90 text-tertiary-fixed-dim px-2 py-1 border border-tertiary-fixed-dim/50">JERSEY</span>
+        </div>
+        <div class="absolute top-3 right-3">
+          <span class="font-data-mono text-[9px] bg-error-container text-on-error-container px-2 py-1 font-bold">SOLD OUT</span>
+        </div>
+        <div class="absolute inset-0 bg-background/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+          <div class="text-center">
+            <p class="font-data-mono text-[10px] text-on-surface-variant uppercase mb-2">Stok habis</p>
+            <button class="border border-primary text-primary px-6 py-2 font-data-label text-[11px] uppercase angular-cut-sm hover:bg-white/10 transition-colors">
+              NOTIFY ME
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="p-4 flex flex-col flex-grow">
+        <span class="font-data-mono text-[9px] text-on-surface-variant mb-1">SKU: UFK-TEE-001</span>
+        <h3 class="font-headline-md text-base font-bold uppercase tracking-tight text-primary mb-1">Training Tee<br>Fasilkom Core</h3>
+        <p class="font-data-mono text-[10px] text-on-surface-variant flex-grow">Cotton combed 30s · Sablon DTG · S/M/L/XL</p>
+        <div class="flex items-center justify-between mt-3 pt-3 border-t border-outline-variant/40">
+          <span class="font-data-mono text-lg font-bold text-on-surface-variant line-through">Rp 120.000</span>
+          <span class="font-data-mono text-[10px] text-error bg-error-container/30 px-2 py-1">OUT OF STOCK</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA Banner -->
+<section class="py-16 px-margin-desktop max-w-container-max mx-auto">
+  <div class="border-2 border-primary bg-surface-container-lowest relative overflow-hidden angular-cut p-12">
+    <div class="absolute inset-0 opacity-5 pointer-events-none grid-bg"></div>
+    <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+      <div>
+        <span class="font-data-mono text-[10px] text-tertiary-fixed-dim tracking-widest block mb-2">// CUSTOM_ORDER</span>
+        <h2 class="font-headline-xl text-headline-lg uppercase tracking-tighter font-bold text-primary">Want custom merch<br>for your squad?</h2>
+        <p class="font-data-mono text-[11px] text-on-surface-variant mt-2">Custom bulk order tersedia untuk 10+ pcs. Hubungi pengurus kami.</p>
+      </div>
+      <a href="contact.html" class="flex-shrink-0 bg-primary text-background px-10 py-4 font-headline-md font-bold uppercase angular-cut hover:bg-tertiary-fixed-dim transition-all duration-300 flex items-center gap-3">
+        CONTACT US <span class="material-symbols-outlined">arrow_forward</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t-2 border-outline mt-8 relative overflow-hidden">
+  <div class="absolute inset-0 opacity-5 pointer-events-none grid-bg"></div>
+  <div class="w-full pt-12 pb-6 px-margin-desktop max-w-container-max mx-auto relative z-10">
+    <div class="flex flex-col md:flex-row justify-between items-start gap-8 mb-12">
+      <div class="max-w-2xl">
+        <p class="font-data-mono text-data-mono text-primary leading-relaxed tracking-tight">
+          OFFICIAL SUPPORTER OF THE FACULTY OF COMPUTER SCIENCE, UNSIKA FASILKOM BELONGS TO US! | #WSFTG
+        </p>
+      </div>
+      <div class="flex items-center gap-4 text-right">
+        <div class="flex flex-col">
+          <span class="font-data-mono text-data-mono text-primary uppercase">© 2026 UFK UNSIKA. All Rights Reserved.</span>
+        </div>
+        <div class="w-12 h-12 border-2 border-primary rounded-full flex items-center justify-center animate-[spin_10s_linear_infinite]">
+          <span class="material-symbols-outlined text-primary text-xl">token</span>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-wrap justify-center items-center gap-x-8 gap-y-4 border-t border-outline-variant/30 pt-8">
+      <a class="font-data-mono text-[12px] text-on-surface-variant hover:text-tertiary-fixed transition-colors flex items-center gap-2 group" href="#">
+        <span class="opacity-0 group-hover:opacity-100 transition-opacity">&gt;</span> INSTAGRAM
+      </a>
+      <a class="font-data-mono text-[12px] text-on-surface-variant hover:text-tertiary-fixed transition-colors flex items-center gap-2 group" href="#">
+        <span class="opacity-0 group-hover:opacity-100 transition-opacity">&gt;</span> TWITTER
+      </a>
+      <a class="font-data-mono text-[12px] text-on-surface-variant hover:text-tertiary-fixed transition-colors flex items-center gap-2 group" href="#">
+        <span class="opacity-0 group-hover:opacity-100 transition-opacity">&gt;</span> DISCORD
+      </a>
+      <a class="font-data-mono text-[12px] text-on-surface-variant hover:text-tertiary-fixed transition-colors flex items-center gap-2 group" href="#">
+        <span class="opacity-0 group-hover:opacity-100 transition-opacity">&gt;</span> TIKTOK
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Hamburger Menu
+  const hamburgerBtn = document.getElementById('hamburger-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const hamburgerIcon = document.getElementById('hamburger-icon');
+  let menuOpen = false;
+  hamburgerBtn.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    mobileMenu.style.maxHeight = menuOpen ? '400px' : '0';
+    mobileMenu.style.opacity = menuOpen ? '1' : '0';
+    hamburgerIcon.textContent = menuOpen ? 'close' : 'menu';
+  });
+
+  // Digital Clock
+  function updateClock() {
+    const now = new Date();
+    const h = String(now.getHours()).padStart(2,'0');
+    const m = String(now.getMinutes()).padStart(2,'0');
+    const s = String(now.getSeconds()).padStart(2,'0');
+    const el = document.getElementById('digital-clock');
+    if (el) el.textContent = `${h}:${m}:${s}`;
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
+
+  // Filter Logic
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const products = document.querySelectorAll('#product-grid > div[data-category]');
+  const itemCount = document.getElementById('item-count');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      let count = 0;
+      products.forEach(p => {
+        const match = filter === 'all' || p.dataset.category === filter;
+        p.style.display = match ? 'flex' : 'none';
+        if (match) count++;
+      });
+      if (itemCount) itemCount.textContent = count;
+    });
+  });
+</script>
+</body></html>
