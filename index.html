@@ -226,7 +226,8 @@
 <span class="font-data-label text-data-label text-tertiary-fixed-dim tracking-[0.3em] uppercase">#TOGETHER MOVING FORWARD</span>
 </div>
 <h1 class="font-headline-xl text-[64px] md:text-[120px] leading-[0.8] font-extrabold uppercase tracking-tighter text-primary italic">
-                    ULTRAS<br>FASILKOM
+                    <span id="hero-ultras" class="block will-change-transform">ULTRAS</span>
+                    <span id="hero-fasilkom" class="block will-change-transform">FASILKOM</span>
                 </h1>
 <p class="mt-4 font-headline-md text-headline-md tracking-[0.5em] text-on-surface-variant uppercase font-light">UNIVERSITAS SINGAPERBANGSA KARAWANG</p>
 <div class="mt-12 flex flex-col md:flex-row gap-6 justify-center">
@@ -428,13 +429,25 @@
         setInterval(updateClock, 1000);
         updateClock();
 
-        // Subtle parallax effect for hero
+        // Parallax: hero image + text split
+        const heroUltras = document.getElementById('hero-ultras');
+        const heroFasilkom = document.getElementById('hero-fasilkom');
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        let rafPending = false;
+
         window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const heroImg = document.querySelector('section img');
-            if(heroImg) {
-                heroImg.style.transform = `translateY(${scrolled * 0.4}px)`;
-            }
+            if (rafPending) return;
+            rafPending = true;
+            requestAnimationFrame(() => {
+                const scrolled = window.pageYOffset;
+                const heroImg = document.querySelector('section img');
+                if (heroImg) heroImg.style.transform = `translateY(${scrolled * 0.4}px)`;
+                if (!reduceMotion) {
+                    if (heroUltras) heroUltras.style.transform = `translateX(${-scrolled * 0.3}px)`;
+                    if (heroFasilkom) heroFasilkom.style.transform = `translateX(${scrolled * 0.3}px)`;
+                }
+                rafPending = false;
+            });
         });
     </script>
 </body></html>
